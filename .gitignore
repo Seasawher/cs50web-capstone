@@ -1,0 +1,3 @@
+memo.md
+*.sqlite3
+__pycache__/

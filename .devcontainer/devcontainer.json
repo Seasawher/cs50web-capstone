@@ -1,0 +1,41 @@
+// For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/docker-existing-docker-compose
+{
+    "name": "cs50web-capstone",
+
+    "dockerComposeFile": "../docker-compose.yml",
+
+    // The 'service' property is the name of the service for the container that VS Code should
+    // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+    "service": "django",
+
+    "workspaceFolder": "/usr/src",
+
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "auto-close-tag.activationOnLanguage": [
+                    "django-html",
+                    "html"
+                ],
+                "[html]": {
+                    "editor.defaultFormatter": "monosans.djlint"
+                },
+                "[django-html]": {
+                    "editor.defaultFormatter": "monosans.djlint"
+                }
+            },
+            "extensions": [
+                "monosans.djlint",
+                "ms-python.black-formatter",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "oderwat.indent-rainbow",
+                "mhutchie.git-graph",
+                "ms-azuretools.vscode-docker",
+                "batisteo.vscode-django",
+                "editorconfig.editorconfig"
+            ]
+        }
+    }
+}

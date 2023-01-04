@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   django:
+    container_name: django
     build:
       context: ./django
       dockerfile: dockerfile

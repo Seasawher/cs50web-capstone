@@ -41,6 +41,8 @@ The major functions of this app are as follows:
   * all of the submissions for that user
   * the number of quizzes that user have ever solved
 
+* **Responsive Design**: The site's UI does not collapse regardless of user's screen size.
+
 ## Distinctiveness and complexity
 
 ### On feature

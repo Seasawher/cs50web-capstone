@@ -21,12 +21,16 @@
                 <div class="basis-3/6">
                     <span class="text-xl font-semibold">Capstone</span>
                 </div>
-                <div class="basis-3/6 text-right">
+                <div class="basis-3/6 text-right text-l">
                     {% if user.is_authenticated %}
-                        <span class="text-l">{{ user.username }}</span>
+                        <a class="hover:underline hover:text-sky-400 mx-3"
+                           href="{% url 'logout' %}">Log Out</a>
                     {% else %}
-                        <a class="text-l hover:underline hover:text-sky-400"
+                        <a class="hover:underline hover:text-sky-400 mx-3"
                            href="{% url 'login' %}">Log In</a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <span class="mx-3">{{ user.username }}</span>
                     {% endif %}
                 </div>
             </div>

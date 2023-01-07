@@ -1,0 +1,14 @@
+{% extends "base/layout.html" %}
+{% block body %}
+    <section class="max-w-xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">
+            {% block head %}
+            {% endblock head %}
+        </h1>
+        {% if message %}<div class="my-5 text-rose-100 bg-rose-900 p-4 rounded-lg">{{ message }}</div>{% endif %}
+        <div class="bg-slate-800 py-6 px-8 rounded-lg">
+            {% block form %}
+            {% endblock form %}
+        </div>
+    </section>
+{% endblock body %}

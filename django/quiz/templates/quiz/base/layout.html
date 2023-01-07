@@ -15,13 +15,23 @@
             {% endblock title %}
         </title>
     </head>
-    <body class="container mx-auto bg-slate-900">
-        <nav class="bg-gray-900">
-            <div class="flex flex-wrap top-0 left-0 border-b border-sky-200 px-3 py-4">
-                <span class="self-center text-xl font-semibold text-sky-100">Capstone</span>
+    <body class="bg-slate-900 text-white">
+        <nav class="bg-slate-800">
+            <div class="flex flex-row top-0 left-0 p-4">
+                <div class="basis-3/6">
+                    <span class="text-xl font-semibold">Capstone</span>
+                </div>
+                <div class="basis-3/6 text-right">
+                    {% if user.is_authenticated %}
+                        <span class="text-l">{{ user.username }}</span>
+                    {% else %}
+                        <a class="text-l hover:underline hover:text-sky-400"
+                           href="{% url 'login' %}">Log In</a>
+                    {% endif %}
+                </div>
             </div>
         </nav>
-        <div class="px-3 py-4">
+        <div class="container mx-auto px-3 py-5">
             {% block body %}
             {% endblock body %}
         </div>

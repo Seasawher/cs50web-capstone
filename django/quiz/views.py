@@ -9,7 +9,7 @@ from .models import User
 # Create your views here.
 
 def index(request: HttpRequest) -> HttpResponse:
-    return render(request, "quiz/index.html")
+    return render(request, "index.html")
 
 def login_view(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
     """
@@ -28,11 +28,11 @@ def login_view(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
         else:
             return render(
                 request,
-                "quiz/login.html",
+                "login.html",
                 {"message": "Invalid username and/or password."},
             )
     else:
-        return render(request, "quiz/login.html")
+        return render(request, "login.html")
 
 
 def logout_view(request):
@@ -53,7 +53,7 @@ def register(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
         confirmation = request.POST["confirmation"]
         if password != confirmation:
             return render(
-                request, "quiz/register.html", {"message": "Passwords must match."}
+                request, "register.html", {"message": "Passwords must match."}
             )
 
         # Attempt to create new user
@@ -62,9 +62,9 @@ def register(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
             user.save()
         except IntegrityError:
             return render(
-                request, "quiz/register.html", {"message": "Username already taken."}
+                request, "register.html", {"message": "Username already taken."}
             )
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request, "quiz/register.html")
+        return render(request, "register.html")

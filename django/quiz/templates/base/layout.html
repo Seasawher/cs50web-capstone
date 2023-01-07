@@ -20,7 +20,7 @@
         <nav class="bg-slate-800">
             <div class="flex flex-row top-0 left-0 p-4">
                 <div class="basis-3/6">
-                    <span class="text-xl font-semibold">Capstone</span>
+                    <a class="text-xl font-semibold" href="{% url 'index' %}">Capstone</a>
                 </div>
                 <div class="basis-3/6 text-right text-l">
                     {% if user.is_authenticated %}

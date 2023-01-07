@@ -4,12 +4,7 @@ from django.shortcuts import render
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpRequest
 
-from .models import User
-
-# Create your views here.
-
-def index(request: HttpRequest) -> HttpResponse:
-    return render(request, "index.html")
+from ..models import User
 
 def login_view(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
     """

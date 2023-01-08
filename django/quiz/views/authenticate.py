@@ -2,17 +2,23 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.shortcuts import render
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpRequest
+from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
+from django.views import View
 
 from ..forms import LoginForm, RegisterForm
 from ..models import User
 
 
-def login_view(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
-    """
-    user login page
-    """
-    if request.method == "POST":
+class Login(View):
+    form = LoginForm()
+    template = "login.html"
+
+    def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
+        return render(request, self.template, {"form": self.form})
+
+    def post(
+        self, request: HttpRequest, *args, **kwargs
+    ) -> HttpResponse | HttpResponseRedirect:
         # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
@@ -25,24 +31,27 @@ def login_view(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
         else:
             return render(
                 request,
-                "login.html",
+                self.template,
                 {"message": "Invalid username and/or password."},
             )
-    else:
-        form = LoginForm()
-        return render(request, "login.html", {"form": form})
 
 
-def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect(reverse("index"))
+class Logout(View):
+    def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponseRedirect:
+        logout(request)
+        return HttpResponseRedirect(reverse("index"))
 
 
-def register(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
-    """
-    register a new user
-    """
-    if request.method == "POST":
+class Register(View):
+    form = RegisterForm()
+    template = "register.html"
+
+    def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
+        return render(request, self.template, {"form": self.form})
+
+    def post(
+        self, request: HttpRequest, *args, **kwargs
+    ) -> HttpResponse | HttpResponseRedirect:
         username = request.POST["username"]
         email = request.POST["email"]
 
@@ -50,9 +59,7 @@ def register(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
-            return render(
-                request, "register.html", {"message": "Passwords must match."}
-            )
+            return render(request, self.template, {"message": "Passwords must match."})
 
         # Attempt to create new user
         try:
@@ -60,10 +67,7 @@ def register(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
             user.save()
         except IntegrityError:
             return render(
-                request, "register.html", {"message": "Username already taken."}
+                request, self.template, {"message": "Username already taken."}
             )
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
-    else:
-        form = RegisterForm()
-        return render(request, "register.html", {"form": form})

@@ -5,26 +5,12 @@
 {% block form %}
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
-        <div class="mb-6">
-            <label for="username" class="block mb-3 text-sm font-medium">Your User Name</label>
-            <input autofocus
-                   id="username"
-                   autocomplete="off"
-                   class="focus:outline focus:outline-2 focus:outline-blue-500 focus:caret-blue-500 placeholder-gray-400 px-3 py-1 bg-gray-600 rounded-lg"
-                   type="text"
-                   name="username"
-                   placeholder="Username"/>
-        </div>
-        <div class="mb-6">
-            <label for="password" class="block mb-3 text-sm font-medium">Password</label>
-            <input autofocus
-                   id="password"
-                   autocomplete="off"
-                   class="focus:outline focus:outline-2 focus:outline-blue-500 focus:caret-blue-500 placeholder-gray-400 px-3 py-1 bg-gray-600 rounded-lg"
-                   type="password"
-                   name="password"
-                   placeholder="Password"/>
-        </div>
+        {% for field in form %}
+            <div class="mb-6">
+                <label for="{{ field.auto_id }}" class="block mb-3 text-sm font-medium">{{ field.label }}</label>
+                {{ field }}
+            </div>
+        {% endfor %}
         <button class="text-white bg-cyan-600 hover:bg-cyan-700 font-medium rounded-lg px-5 py-1.5 my-3 focus:outline focus:outline-2 focus:outline-blue-500"
                 type="submit">
             Submit

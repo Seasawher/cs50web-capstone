@@ -4,7 +4,9 @@ from django.shortcuts import render
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpRequest
 
+from ..forms import LoginForm, RegisterForm
 from ..models import User
+
 
 def login_view(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
     """
@@ -27,7 +29,8 @@ def login_view(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
                 {"message": "Invalid username and/or password."},
             )
     else:
-        return render(request, "login.html")
+        form = LoginForm()
+        return render(request, "login.html", {"form": form})
 
 
 def logout_view(request):
@@ -62,4 +65,5 @@ def register(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request, "register.html")
+        form = RegisterForm()
+        return render(request, "register.html", {"form": form})

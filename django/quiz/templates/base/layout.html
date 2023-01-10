@@ -30,9 +30,7 @@
                         <a class="hover:underline hover:text-sky-400 mx-3"
                            href="{% url 'login' %}">Log In</a>
                     {% endif %}
-                    {% if user.is_authenticated %}
-                        <span class="mx-3">{{ user.username }}</span>
-                    {% endif %}
+                    {% if user.is_authenticated %}<span class="mx-3">{{ user.username }}</span>{% endif %}
                 </div>
             </div>
         </nav>
@@ -41,4 +39,7 @@
             {% endblock body %}
         </div>
     </body>
+    {% load static %}
+    <script type="text/babel" src="{% static 'quiz/app.jsx' %}">
+    </script>
 </html>

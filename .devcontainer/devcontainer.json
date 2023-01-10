@@ -28,12 +28,12 @@
             "extensions": [
                 "monosans.djlint",
                 "ms-python.black-formatter",
-                "ms-python.python",
                 "ms-python.vscode-pylance",
                 "oderwat.indent-rainbow",
                 "mhutchie.git-graph",
                 "ms-azuretools.vscode-docker",
                 "batisteo.vscode-django",
+                "ms-python.python",
                 "editorconfig.editorconfig"
             ]
         }

@@ -31,6 +31,10 @@ class LoginForm(BaseForm):
         super().__init__()
         self.fields["password"].widget.input_type = "password"
 
+    def form_type(self):
+        """display the meta description of form"""
+        return "login"
+
 
 class RegisterForm(BaseForm):
     confirmation = forms.CharField(label="Confirm Password", widget=forms.PasswordInput())
@@ -41,3 +45,7 @@ class RegisterForm(BaseForm):
     def __init__(self):
         super().__init__()
         self.fields["password"].widget.input_type = "password"
+
+    def form_type(self):
+        """display the meta description of form"""
+        return "register"

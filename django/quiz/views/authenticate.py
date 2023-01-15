@@ -11,7 +11,7 @@ from ..models import User
 
 class Login(View):
     form = LoginForm()
-    template = "login.html"
+    template = "authenticate/login.html"
 
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         return render(request, self.template, {"form": self.form})
@@ -44,7 +44,7 @@ class Logout(View):
 
 class Register(View):
     form = RegisterForm()
-    template = "register.html"
+    template = "authenticate/register.html"
 
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         return render(request, self.template, {"form": self.form})

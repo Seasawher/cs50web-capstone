@@ -1,0 +1,6 @@
+{% extends "authenticate/form.html" %}
+
+{% block info %}
+    Don't have an account? <a class="hover:underline hover:text-sky-400"
+    href="{% url 'register' %}">Register here.</a>
+{% endblock info %}

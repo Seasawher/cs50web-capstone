@@ -39,7 +39,6 @@
             {% endblock body %}
         </div>
     </body>
-    {% load static %}
-    <script type="text/babel" src="{% static 'quiz/app.jsx' %}">
-    </script>
+    {% block scripts %}
+    {% endblock scripts %}
 </html>

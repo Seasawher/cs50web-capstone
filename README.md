@@ -9,7 +9,7 @@ This is a platform where people can enjoy solving quizzes and post own quizzes.
 The major functions of this app are as follows:
 
 * **Display Quizzes**: Users including guests can see all quizzes from all users, with the most recent quiz first. This page should display:
-  * title and body (omit if long) of the quiz
+  * title of the quiz
   * star: number of stars that the quiz have gained
   * author: the user who posted the quiz
   * timestamp: when the quiz is posted
@@ -20,6 +20,7 @@ The major functions of this app are as follows:
   * body of the quiz
   * how many times solved
   * percentage of correct answers
+  * form to submit answer
 
 * **Post a New Quiz**: Users who are signed in should be able to write a new text-based quiz by filling in text into a text area and then clicking a button to submit the quiz.
   * To maintain consistency with the answers, quizzes cannot be edited once submitted.

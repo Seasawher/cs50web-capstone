@@ -32,7 +32,7 @@ class Login(View):
             return render(
                 request,
                 self.template,
-                {"message": "Invalid username and/or password."},
+                {"message": "Invalid username and/or password.", "form": self.form},
             )
 
 
@@ -59,7 +59,7 @@ class Register(View):
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
-            return render(request, self.template, {"message": "Passwords must match."})
+            return render(request, self.template, {"message": "Passwords must match.", "form": self.form})
 
         # Attempt to create new user
         try:

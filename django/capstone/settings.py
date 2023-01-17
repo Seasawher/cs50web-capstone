@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "quiz",
     "rest_framework",
+    "heroicons",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

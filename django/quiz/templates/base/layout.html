@@ -1,4 +1,5 @@
 {% load static %}
+{% load heroicons %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +21,10 @@
         <nav class="bg-slate-800">
             <div class="flex flex-row top-0 left-0 p-4">
                 <div class="basis-3/6">
-                    <a class="text-xl font-semibold" href="{% url 'index' %}">Capstone</a>
+                    <a class="text-xl font-semibold text-sky-300" href="{% url 'index' %}">
+                        {% heroicon_outline "rocket-launch" class="inline" %}
+                        Capstone
+                    </a>
                 </div>
                 <div class="basis-3/6 text-right text-l">
                     {% if user.is_authenticated %}
@@ -30,7 +34,12 @@
                         <a class="hover:underline hover:text-sky-400 mx-3"
                            href="{% url 'login' %}">Log In</a>
                     {% endif %}
-                    {% if user.is_authenticated %}<span class="mx-3">{{ user.username }}</span>{% endif %}
+                    {% if user.is_authenticated %}
+                        <span class="mx-3">
+                            {% heroicon_outline "user" class="inline" %}
+                            {{ user.username }}
+                        </span>
+                    {% endif %}
                 </div>
             </div>
         </nav>

@@ -14,6 +14,9 @@
     "customizations": {
         "vscode": {
             "settings": {
+                "files.trimFinalNewlines": true,
+                "files.trimTrailingWhitespace": true,
+                "editor.formatOnSave": true,
                 "auto-close-tag.activationOnLanguage": [
                     "django-html",
                     "html"
@@ -23,6 +26,9 @@
                 },
                 "[django-html]": {
                     "editor.defaultFormatter": "monosans.djlint"
+                },
+                "[markdown]": {
+                    "files.trimTrailingWhitespace": false
                 }
             },
             "extensions": [

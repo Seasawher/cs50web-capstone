@@ -47,16 +47,11 @@
                     </div>
                 );
             } else {
-                console.log("loading finished!");
-                console.log("now quizzes is as follows:")
-                console.log(quizzes);
-                console.log("0th quizze is as follows:")
-                console.log(quizzes[0]);
-                console.log("...and its username is:")
-                console.log(quizzes[0]['username']);
                 return (
                     <div>
-                        {quizzes[0]['username']}
+                        {quizzes.map(function (quiz) {
+                            return <div>{quiz['username']}</div>
+                        })}
                     </div>
                 );
             }

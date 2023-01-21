@@ -34,6 +34,7 @@
                     <div>
                         {quizzes.map(function (quiz) {
                             return <Quiz
+                                key={quiz['id']}
                                 author={quiz['username']}
                                 state="solved"
                                 title={quiz['title']}

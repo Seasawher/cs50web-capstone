@@ -1,5 +1,3 @@
-console.log("loading is successful!");
-
 // heroicon handmade components for React
 function CheckCircleIcon({ className }) {
     return (

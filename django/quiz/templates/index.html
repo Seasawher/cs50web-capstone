@@ -26,10 +26,9 @@
             const [quizzes, setQuizzes] = React.useState([]);
 
             function dataFetch() {
-                fetch('/api/user/', {method: 'GET'})
+                fetch('/api/quiz/', {method: 'GET'})
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         setQuizzes(data)
                     })
             }
@@ -40,9 +39,8 @@
             }, []);
 
             if (quizzes.length == 0) {
-                console.log("now loading...");
                 return (
-                    <div>
+                    <div className="max-w-2xl mx-auto">
                         now loading..
                     </div>
                 );
@@ -50,27 +48,31 @@
                 return (
                     <div>
                         {quizzes.map(function (quiz) {
-                            return <div>{quiz['username']}</div>
+                            return <Quiz
+                                author={quiz['username']}
+                                state="solved"
+                                title={quiz['title']}
+                            />
                         })}
                     </div>
                 );
             }
 
         }
-        function Quiz({author, state}) {
+        function Quiz({author, state, title}) {
             return (
                 <div className="py-6 px-8 mb-3 bg-slate-700 rounded-lg max-w-2xl mx-auto">
                     <div className="text-emerald-300 inline text-sm mr-2">
                         <CheckCircleIcon className="inline w-4 h-4 mr-1"/>
-                        { state }
+                        {state}
                     </div>
                     <div className="inline text-sm">
                         <StarIcon className="inline w-4 h-4 mr-1"/>
                         334
                     </div>
-                    <div className="text-sky-300 font-bold text-xl mb-2">Title: Why did he eat the apple?</div>
+                    <div className="text-sky-300 font-bold text-xl mb-2">{title}</div>
                     <div className="text-right text-xs">
-                        <span className=" text-slate-400 mr-2">{ author }</span>
+                        <span className=" text-slate-400 mr-2">{author}</span>
                         <span className="">3 mins ago</span>
                     </div>
                 </div>

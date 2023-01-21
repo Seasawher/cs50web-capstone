@@ -27,9 +27,10 @@
 
             function dataFetch() {
                 fetch('/api/user/', {method: 'GET'})
-                    .then(res => res.json)
+                    .then(res => res.json())
                     .then(data => {
-                        setQuizzes(data);
+                        console.log(data);
+                        setQuizzes(data)
                     })
             }
 
@@ -38,13 +39,28 @@
                 dataFetch();
             }, []);
 
-            return (
-                <div>
-                    {quizzes.map((quiz) => {
-                        <p>{quiz.username}</p>
-                    })}
-                </div>
-            );
+            if (quizzes.length == 0) {
+                console.log("now loading...");
+                return (
+                    <div>
+                        now loading..
+                    </div>
+                );
+            } else {
+                console.log("loading finished!");
+                console.log("now quizzes is as follows:")
+                console.log(quizzes);
+                console.log("0th quizze is as follows:")
+                console.log(quizzes[0]);
+                console.log("...and its username is:")
+                console.log(quizzes[0]['username']);
+                return (
+                    <div>
+                        {quizzes[0]['username']}
+                    </div>
+                );
+            }
+
         }
         function Quiz({author, state}) {
             return (

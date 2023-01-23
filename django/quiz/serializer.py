@@ -10,6 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class QuizSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
         model = Quiz
         fields = '__all__'

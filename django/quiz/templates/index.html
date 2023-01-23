@@ -45,7 +45,7 @@
                         {quizzes.map(function (quiz) {
                             return <Quiz
                                 key={quiz['id']}
-                                author={quiz['username']}
+                                author={quiz['user']['username']}
                                 state="solved"
                                 title={quiz['title']}
                                 timestamp={formatTime(quiz['created_at'])}

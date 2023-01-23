@@ -5,6 +5,18 @@
     <div id="root"></div>
 {% endblock body %}
 {% block scripts %}
+    <script>
+        function formatTime(time) {
+            let date = new Date(time);
+
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            };
+            return date.toLocaleString('en-US', options);
+        }
+    </script>
     <script type="text/babel" src="{% static 'icon.jsx' %}"></script>
     <script type="text/babel">
         function App() {
@@ -25,9 +37,7 @@
 
             if (quizzes.length == 0) {
                 return (
-                    <div className="max-w-2xl mx-auto">
-                        now loading..
-                    </div>
+                    <div className="max-w-2xl mx-auto">now loading..</div>
                 );
             } else {
                 return (
@@ -38,7 +48,7 @@
                                 author={quiz['username']}
                                 state="solved"
                                 title={quiz['title']}
-                                timestamp={quiz['created_at']}
+                                timestamp={formatTime(quiz['created_at'])}
                             />
                         })}
                     </div>

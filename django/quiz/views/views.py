@@ -17,6 +17,7 @@ class QuizViewSet(viewsets.ModelViewSet):
     queryset = Quiz.objects.all()
     serializer_class = QuizSerializer
 
+
 def index(request: HttpRequest) -> HttpResponse:
     return render(request, "index.html")
 

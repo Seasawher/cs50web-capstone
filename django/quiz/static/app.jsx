@@ -47,7 +47,9 @@ function Quiz({ author, state, title, timestamp, star }) {
                 <StarIcon className="inline w-4 h-4 mr-1" />
                 {star}
             </div>
-            <div className="text-sky-300 font-bold text-xl mb-2">{title}</div>
+            <div className="text-sky-300 font-bold text-xl mb-2">
+                <a href="#" className="hover:text-sky-500">{title}</a>
+            </div>
             <div className="text-right text-xs">
                 <span className=" text-slate-400 mr-2">{author}</span>
                 <span className="">{timestamp}</span>

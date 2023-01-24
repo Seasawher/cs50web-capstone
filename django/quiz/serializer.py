@@ -11,6 +11,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 class QuizSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+    gained_stars = serializers.Field()
+
+    def gained_stars(self, obj):
+        return obj.gained_stars
+
     class Meta:
         model = Quiz
-        fields = '__all__'
+        fields = ('id', 'user', 'created_at', 'title', 'gained_stars')

@@ -28,6 +28,7 @@ function App() {
                         state="solved"
                         title={quiz['title']}
                         timestamp={formatTime(quiz['created_at'])}
+                        star={quiz['gained_stars'].length}
                     />
                 })}
             </div>
@@ -35,7 +36,7 @@ function App() {
     }
 }
 
-function Quiz({ author, state, title, timestamp }) {
+function Quiz({ author, state, title, timestamp, star }) {
     return (
         <div className="py-6 px-8 mb-3 bg-slate-700 rounded-lg max-w-2xl mx-auto">
             <div className="text-emerald-300 inline text-sm mr-2">
@@ -44,7 +45,7 @@ function Quiz({ author, state, title, timestamp }) {
             </div>
             <div className="inline text-sm">
                 <StarIcon className="inline w-4 h-4 mr-1" />
-                0
+                {star}
             </div>
             <div className="text-sky-300 font-bold text-xl mb-2">{title}</div>
             <div className="text-right text-xs">

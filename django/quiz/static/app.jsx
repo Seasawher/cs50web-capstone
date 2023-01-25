@@ -24,6 +24,7 @@ function App() {
                 {quizzes.map(function (quiz) {
                     return <Quiz
                         key={quiz['id']}
+                        id={quiz['id']}
                         author={quiz['user']['username']}
                         state="solved"
                         title={quiz['title']}
@@ -36,7 +37,9 @@ function App() {
     }
 }
 
-function Quiz({ author, state, title, timestamp, star }) {
+function Quiz({ id, author, state, title, timestamp, star }) {
+    const current_url = location.href;
+    const target_url = `${current_url}quiz/${id}`;
     return (
         <div className="py-6 px-8 mb-3 bg-slate-700 rounded-lg max-w-2xl mx-auto">
             <div className="text-emerald-300 inline text-sm mr-2">
@@ -48,7 +51,7 @@ function Quiz({ author, state, title, timestamp, star }) {
                 {star}
             </div>
             <div className="text-sky-300 font-bold text-xl mb-2">
-                <a href="#" className="hover:text-sky-500">{title}</a>
+                <a href={target_url} className="hover:text-sky-500">{title}</a>
             </div>
             <div className="text-right text-xs">
                 <span className=" text-slate-400 mr-2">{author}</span>

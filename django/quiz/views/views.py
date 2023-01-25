@@ -18,11 +18,21 @@ class QuizViewSet(viewsets.ModelViewSet):
     serializer_class = QuizSerializer
 
 
-def index(request: HttpRequest) -> HttpResponse:
-    return render(request, "index.html")
+class Index(View):
+    """diplay quizzes"""
+
+    def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
+        return render(request, "index.html")
 
 
-class AddQuiz(View):
+class Detail(View):
+    """show the detail info of the quiz"""
+
+    def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
+        return render(request, "detail.html")
+
+
+class Add(View):
     """post a new quiz"""
 
     def get(self, request: HttpRequest, *args, **kwargs):

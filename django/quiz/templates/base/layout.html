@@ -21,19 +21,20 @@
         <nav class="bg-slate-800">
             <div class="flex flex-row top-0 left-0 p-4">
                 <div class="basis-3/6">
-                    <a class="text-xl font-semibold text-sky-300 hover:text-sky-500" href="{% url 'index' %}">
+                    <a class="text-xl font-semibold text-sky-300 hover:text-sky-500"
+                       href="{% url 'index' %}">
                         {% heroicon_outline "rocket-launch" class="inline" %}
                         Capstone
                     </a>
                 </div>
                 <div class="basis-3/6 text-right text-l">
-                    {% if user.is_authenticated %}
-                        <a class="hover:underline hover:text-sky-400 mx-3"
-                           href="{% url 'logout' %}">Log Out</a>
-                    {% else %}
-                        <a class="hover:underline hover:text-sky-400 mx-3"
-                           href="{% url 'login' %}">Log In</a>
-                    {% endif %}
+                    <span class="hover:underline hover:text-sky-400 mx-3">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}">Log Out</a>
+                        {% else %}
+                            <a href="{% url 'login' %}">Log In</a>
+                        {% endif %}
+                    </span>
                     {% if user.is_authenticated %}
                         <span class="mx-3">
                             {% heroicon_outline "user" class="inline" %}

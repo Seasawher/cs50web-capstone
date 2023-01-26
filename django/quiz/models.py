@@ -47,4 +47,4 @@ class Submission(TimeStampedModel):
     quiz = models.ForeignKey(
         Quiz, on_delete=models.CASCADE, related_name="received_submissions"
     )
-    is_correct = models.BooleanField()
+    submitted_answer = models.TextField(null = True)

@@ -16,7 +16,7 @@ function App() {
 
     if (quizzes.length == 0) {
         return (
-            <div className="max-w-2xl mx-auto">now loading..</div>
+            <div>now loading..</div>
         );
     } else {
         return (
@@ -41,7 +41,7 @@ function Quiz({ id, author, state, title, timestamp, star }) {
     const current_url = location.href;
     const target_url = `${current_url}quiz/${id}`;
     return (
-        <div className="py-6 px-8 mb-3 bg-slate-700 rounded-lg max-w-2xl mx-auto">
+        <div className="py-6 px-8 mb-3 bg-slate-700 rounded-lg">
             <div className="text-emerald-300 inline text-sm mr-2">
                 <CheckCircleIcon className="inline w-4 h-4 mr-1" />
                 {state}

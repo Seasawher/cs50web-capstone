@@ -16,7 +16,8 @@ class BaseForm(forms.ModelForm):
                     "autofocus": "true",
                     "placeholder": field.label,
                     "autocomplete": "off",
-                    "class": "focus:outline focus:outline-2 focus:outline-blue-500 focus:caret-blue-500 placeholder-gray-400 px-3 py-1 bg-gray-600 rounded-lg",
+                    "class": "focus:outline focus:outline-2 focus:outline-blue-500 focus:caret-blue-500 \
+                        placeholder-gray-400 px-3 py-1 bg-gray-600 rounded-lg w-10/12",
                 }
             )
         super().__init__(*args, **kwargs)
@@ -37,7 +38,10 @@ class LoginForm(BaseForm):
 
 
 class RegisterForm(BaseForm):
-    confirmation = forms.CharField(label="Confirm Password", widget=forms.PasswordInput())
+    confirmation = forms.CharField(
+        label="Confirm Password", widget=forms.PasswordInput()
+    )
+
     class Meta:
         model = User
         fields = ["username", "email", "password"]

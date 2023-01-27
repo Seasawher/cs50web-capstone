@@ -29,11 +29,18 @@ class Index(View):
 
 class Detail(View):
     """show the detail info of the quiz"""
+
     form = Submission()
     template = "detail.html"
 
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
-        return render(request, "detail.html", {"form": self.form})
+        print(kwargs)
+        quiz_id = kwargs['quiz_id']
+        quiz = Quiz.objects.get(pk=quiz_id)
+        return render(request, "detail.html", {
+            "quiz": quiz,
+            "form": self.form
+        })
 
 
 class Add(View):

@@ -47,10 +47,10 @@ class Submission(TimeStampedModel):
     quiz = models.ForeignKey(
         Quiz, on_delete=models.CASCADE, related_name="received_submissions"
     )
-    submitted_answer = models.TextField(null=True)
+    submitted_answer = models.CharField(max_length=30 ,null=True)
 
     @property
     def is_accepted(self) -> bool:
         """returns if the submission is accepted"""
-        
+
         pass

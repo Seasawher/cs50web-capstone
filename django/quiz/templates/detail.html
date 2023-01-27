@@ -1,4 +1,5 @@
 {% extends "base/layout.html" %}
+{% load heroicons %}
 {% load static %}
 {% block body %}
     <div class="max-w-2xl mx-auto" id="root">
@@ -11,6 +12,18 @@
                 <p>{% lorem %}</p>
                 <p>{% lorem %}</p>
             </div>
+        </div>
+        <div class="mt-5 py-6 px-8 bg-slate-700 rounded-lg">
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="{{ form.submitted_answer.auto_id }}" class="block mb-5">I have a question. Can you answer this?</label>
+                <div class="flex">
+                    {{ form.submitted_answer }}
+                    <button type="button" class="mx-4">
+                        {% heroicon_outline "paper-airplane" class="hover:scale-110" %}
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock body %}

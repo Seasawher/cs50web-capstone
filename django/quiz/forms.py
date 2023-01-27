@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import User
+from .models import *
 
 
 class BaseForm(forms.ModelForm):
@@ -17,7 +17,7 @@ class BaseForm(forms.ModelForm):
                     "placeholder": field.label,
                     "autocomplete": "off",
                     "class": "focus:outline focus:outline-2 focus:outline-blue-500 focus:caret-blue-500 \
-                        placeholder-gray-400 px-3 py-1 bg-gray-600 rounded-lg w-10/12",
+                        placeholder-gray-400 px-3 py-1 bg-gray-600 rounded-lg w-full",
                 }
             )
         super().__init__(*args, **kwargs)
@@ -53,3 +53,9 @@ class RegisterForm(BaseForm):
     def form_type(self):
         """display the meta description of form"""
         return "register"
+
+
+class Submission(BaseForm):
+    class Meta:
+        model = Submission
+        fields = ["submitted_answer"]

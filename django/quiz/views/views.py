@@ -5,6 +5,8 @@ from ..serializer import *
 from ..models import *
 from rest_framework import viewsets
 
+from ..forms import *
+
 # Create your views here.
 
 
@@ -27,9 +29,11 @@ class Index(View):
 
 class Detail(View):
     """show the detail info of the quiz"""
+    form = Submission()
+    template = "detail.html"
 
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
-        return render(request, "detail.html")
+        return render(request, "detail.html", {"form": self.form})
 
 
 class Add(View):

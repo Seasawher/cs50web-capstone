@@ -41,20 +41,22 @@ function Quiz({ id, author, state, title, timestamp, star }) {
     const current_url = location.href;
     const target_url = `${current_url}quiz/${id}`;
     return (
-        <div className="py-6 px-8 mb-3 bg-slate-700 rounded-lg">
-            <div className="text-emerald-300 inline text-sm mr-2">
-                <CheckCircleIcon className="inline w-4 h-4 mr-1" />
-                {state}
+        <div className="pb-6 pt-3 px-8 mb-3 bg-slate-700 rounded-lg">
+            <div class="mb-4">
+                <div className="text-emerald-300 inline mr-2">
+                    <CheckCircleIcon className="inline w-4 h-4 mr-1" />
+                    {state}
+                </div>
+                <div className="inline">
+                    <StarIcon className="inline w-4 h-4 mr-1" />
+                    {star}
+                </div>
             </div>
-            <div className="inline text-sm">
-                <StarIcon className="inline w-4 h-4 mr-1" />
-                {star}
-            </div>
-            <div className="text-sky-300 font-bold text-xl mb-2">
+            <div className="text-sky-300 font-bold text-2xl mb-2">
                 <a href={target_url} className="hover:text-sky-500">{title}</a>
             </div>
             <div className="text-right text-xs">
-                <span className=" text-slate-400 mr-2">{author}</span>
+                <span className="text-slate-400 mr-2">{author}</span>
                 <span className="">{timestamp}</span>
             </div>
         </div>

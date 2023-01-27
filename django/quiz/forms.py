@@ -59,3 +59,7 @@ class Submission(BaseForm):
     class Meta:
         model = Submission
         fields = ["submitted_answer"]
+
+    def __init__(self):
+        super().__init__()
+        self.fields["submitted_answer"].widget.attrs['placeholder'] = "your answer"

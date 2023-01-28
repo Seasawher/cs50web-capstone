@@ -8,14 +8,11 @@
                 {{ quiz.title }}
                 <span class="ml-3 text-slate-400">#{{ quiz.id }}</span>
             </h2>
-            <div class="[&>p]:mt-7">
+            <div class="[&>p]:mt-7 mb-16">
                 {{ quiz.content }}
             </div>
-        </div>
-        <div class="mt-5 py-6 px-8 bg-slate-800 rounded-lg">
             <form action="" method="post">
                 {% csrf_token %}
-                <label for="{{ form.submitted_answer.auto_id }}" class="block mb-5">Enter your answer</label>
                 <div class="flex">
                     {{ form.submitted_answer }}
                     <button type="button" class="mx-4">

@@ -40,7 +40,8 @@
                 "ms-azuretools.vscode-docker",
                 "batisteo.vscode-django",
                 "ms-python.python",
-                "editorconfig.editorconfig"
+                "editorconfig.editorconfig",
+                "eamodio.gitlens"
             ]
         }
     }

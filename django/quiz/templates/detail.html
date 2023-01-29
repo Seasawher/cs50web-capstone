@@ -29,9 +29,13 @@
     <script type="text/babel" src="{% static 'quizList.jsx' %}"></script>
     <script type="text/babel" src="{% static 'quizDetail.jsx' %}"></script>
     <script type="text/babel">
-        let quizId = {{ quiz.id }};
+        // give information
+        const quizId = '{{ quiz.id }}';
+        const title = "{{ quiz.title }}";
+        const content = "{{ quiz.content }}";
+
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
-        root.render(<QuizDetail id={quizId} />);
+        root.render(<QuizDetail id={quizId} title={title} content={content}/>);
     </script>
 {% endblock scripts %}

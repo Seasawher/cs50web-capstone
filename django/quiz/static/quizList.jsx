@@ -1,4 +1,4 @@
-function App() {
+function QuizList() {
     const [quizzes, setQuizzes] = React.useState([]);
 
     function dataFetch() {
@@ -67,11 +67,7 @@ function State({ state }) {
 function Star({ star }) {
     const [starred, setStarred] = React.useState(false);
 
-    function dataFetch() {
-        console.log("hello!");
-    }
-
-    function HandleClick() {
+    function handleClick() {
         if (starred) {
             setStarred(false);
         } else {
@@ -79,31 +75,27 @@ function Star({ star }) {
         }
     }
 
-    React.useEffect(() => {
-        dataFetch();
-    }, []);
-
     if (! starred) {
         return (
-            <button type="button" className="inline" onClick={HandleClick}>
+            <button type="button" className="inline" onClick={handleClick}>
                 <StarIcon className="inline w-4 h-4 mr-1" />
                 {star}
             </button>
         );
     } else {
         return (
-            <button type="button" className="inline text-amber-200" onClick={HandleClick}>
+            <button type="button" className="inline text-amber-200" onClick={handleClick}>
                 <SolidStarIcon className="inline w-4 h-4 mr-1" />
                 {star+1}
             </button>
         );
     }
-
 }
 
 function Quiz({ id, author, state, title, timestamp, star }) {
     const current_url = location.href;
     const target_url = `${current_url}quiz/${id}`;
+
     return (
         <div className="pb-6 pt-3 px-8 mb-3 bg-slate-700 rounded-lg">
             <div className="mb-4">
@@ -120,6 +112,3 @@ function Quiz({ id, author, state, title, timestamp, star }) {
         </div>
     );
 }
-const container = document.getElementById('root');
-const root = ReactDOM.createRoot(container);
-root.render(<App />);

@@ -85,17 +85,17 @@ function Star({ star }) {
 
     if (! starred) {
         return (
-            <div className="inline" onClick={HandleClick}>
+            <button type="button" className="inline" onClick={HandleClick}>
                 <StarIcon className="inline w-4 h-4 mr-1" />
                 {star}
-            </div>
+            </button>
         );
     } else {
         return (
-            <div className="inline" onClick={HandleClick}>
-                <SolidStarIcon className="inline text-amber-200 w-4 h-4 mr-1" />
+            <button type="button" className="inline text-amber-200" onClick={HandleClick}>
+                <SolidStarIcon className="inline w-4 h-4 mr-1" />
                 {star+1}
-            </div>
+            </button>
         );
     }
 

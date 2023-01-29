@@ -64,6 +64,43 @@ function State({ state }) {
     }
 }
 
+function Star({ star }) {
+    const [starred, setStarred] = React.useState(false);
+
+    function dataFetch() {
+        console.log("hello!");
+    }
+
+    function HandleClick() {
+        if (starred) {
+            setStarred(false);
+        } else {
+            setStarred(true);
+        }
+    }
+
+    React.useEffect(() => {
+        dataFetch();
+    }, []);
+
+    if (! starred) {
+        return (
+            <div className="inline" onClick={HandleClick}>
+                <StarIcon className="inline w-4 h-4 mr-1" />
+                {star}
+            </div>
+        );
+    } else {
+        return (
+            <div className="inline" onClick={HandleClick}>
+                <SolidStarIcon className="inline text-amber-200 w-4 h-4 mr-1" />
+                {star+1}
+            </div>
+        );
+    }
+
+}
+
 function Quiz({ id, author, state, title, timestamp, star }) {
     const current_url = location.href;
     const target_url = `${current_url}quiz/${id}`;
@@ -71,10 +108,7 @@ function Quiz({ id, author, state, title, timestamp, star }) {
         <div className="pb-6 pt-3 px-8 mb-3 bg-slate-700 rounded-lg">
             <div className="mb-4">
                 <State state={state} />
-                <div className="inline">
-                    <StarIcon className="inline w-4 h-4 mr-1" />
-                    {star}
-                </div>
+                <Star star={star}/>
             </div>
             <div className="text-sky-300 font-bold text-2xl mb-2">
                 <a href={target_url} className="hover:text-sky-500">{title}</a>

@@ -8,7 +8,11 @@ function QuizDetail({ id, title, content }) {
             <div className="[&>p]:mt-7 mb-16">{content}</div>
             <form action="" method="post">
                 <div className="flex">
-                    <button type="button" className="mx-4"></button>
+                    <input className="focus:outline focus:outline-2 focus:outline-blue-500 focus:caret-blue-500
+                        placeholder-gray-400 px-3 py-1 bg-gray-600 rounded-lg w-full"/>
+                    <button type="button" className="mx-4">
+                        <PaperAirplaneIcon className="inline w-7 h-7 hover:scale-110 hover:text-blue-200 text-blue-500"/>
+                    </button>
                 </div>
             </form>
         </div>

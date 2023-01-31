@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import *
+from .models import User, Submission
 
 
 class BaseForm(forms.ModelForm):
@@ -16,7 +16,8 @@ class BaseForm(forms.ModelForm):
                     "autofocus": "true",
                     "placeholder": field.label,
                     "autocomplete": "off",
-                    "class": "focus:outline focus:outline-2 focus:outline-blue-500 focus:caret-blue-500 \
+                    "class": "focus:outline focus:outline-2 \
+                        focus:outline-blue-500 focus:caret-blue-500 \
                         placeholder-gray-400 px-3 py-1 bg-gray-600 rounded-lg w-full",
                 }
             )

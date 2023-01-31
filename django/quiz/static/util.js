@@ -1,3 +1,7 @@
+/**
+ * @param {string} time timestamp
+ * @returns {string} time in human-readable style
+ */
 function formatTime(time) {
     let date = new Date(time);
 

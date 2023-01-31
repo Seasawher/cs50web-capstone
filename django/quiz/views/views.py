@@ -49,5 +49,12 @@ class Add(View):
     def get(self, request: HttpRequest, *args, **kwargs):
         pass
 
+    @csrf_exempt
     def post(self, request: HttpRequest, *args, **kwargs):
-        pass
+        user = request.user
+        submisson = Submission(
+            user = user,
+            quiz = kwargs['quiz_id'],
+            submitted_answer = request.POST["quiz_id"]
+        )
+        submisson.save()

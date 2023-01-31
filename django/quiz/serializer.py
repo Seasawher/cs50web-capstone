@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import *
+from .models import User, Quiz
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -18,4 +18,4 @@ class QuizSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quiz
-        fields = ('id', 'user', 'created_at', 'title', 'gained_stars')
+        fields = ("id", "user", "created_at", "title", "gained_stars", "content")

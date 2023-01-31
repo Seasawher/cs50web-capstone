@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from django.views import View
-from ..serializer import *
-from ..models import *
+from ..serializer import UserSerializer, QuizSerializer
+from ..models import User, Quiz, Submission
 from rest_framework import viewsets
+from django.views.decorators.csrf import csrf_exempt
 
-from ..forms import *
+from ..forms import SubmissionForm
 
 # Create your views here.
 
@@ -30,11 +31,10 @@ class Index(View):
 class Detail(View):
     """show the detail info of the quiz"""
 
-    form = Submission()
+    form = SubmissionForm()
     template = "detail.html"
 
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
-        print(kwargs)
         quiz_id = kwargs['quiz_id']
         quiz = Quiz.objects.get(pk=quiz_id)
         return render(request, "detail.html", {

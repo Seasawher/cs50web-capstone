@@ -56,7 +56,7 @@ class RegisterForm(BaseForm):
         return "register"
 
 
-class Submission(BaseForm):
+class SubmissionForm(BaseForm):
     class Meta:
         model = Submission
         fields = ["submitted_answer"]

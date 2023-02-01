@@ -21,20 +21,31 @@ function QuizList() {
     } else {
         return (
             <div>
-                {quizzes.map(function (quiz) {
-                    return <Quiz
-                        key={quiz['id']}
-                        id={quiz['id']}
-                        author={quiz['user']['username']}
-                        state="attempted"
-                        title={quiz['title']}
-                        timestamp={formatTime(quiz['created_at'])}
-                        star={quiz['gained_stars'].length}
-                    />
-                })}
+                <div className="mb-2 text-right"><AddButton /></div>
+                <div>
+                    {quizzes.map(function (quiz) {
+                        return <Quiz
+                            key={quiz['id']}
+                            id={quiz['id']}
+                            author={quiz['user']['username']}
+                            state="attempted"
+                            title={quiz['title']}
+                            timestamp={formatTime(quiz['created_at'])}
+                            star={quiz['gained_stars'].length}
+                        />
+                    })}
+                </div>
             </div>
         );
     }
+}
+
+function AddButton() {
+    return (
+        <button type="button" className="bg-slate-700 p-1 rounded-lg hover:bg-slate-600">
+            <PlusIcon className="w-6 h-6"/>
+        </button>
+    );
 }
 
 function State({ state }) {

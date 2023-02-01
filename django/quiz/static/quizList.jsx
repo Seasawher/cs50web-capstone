@@ -42,9 +42,9 @@ function QuizList() {
 
 function AddButton() {
     return (
-        <button type="button" className="bg-slate-700 p-1 rounded-lg hover:bg-slate-600">
-            <PlusIcon className="w-6 h-6"/>
-        </button>
+        <a href="quiz/1" className="inline-block bg-slate-700 p-1 rounded-lg hover:bg-slate-600">
+            <PlusIcon className="inline w-6 h-6"/>
+        </a>
     );
 }
 

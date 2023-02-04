@@ -8,4 +8,5 @@ RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
 # Django
 COPY ./django /usr/src/django
 WORKDIR /usr/src/django
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt

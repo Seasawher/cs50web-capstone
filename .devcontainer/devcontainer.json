@@ -14,11 +14,12 @@
     "customizations": {
         "vscode": {
             "settings": {
-                "files.trimFinalNewlines": true,
-                "files.trimTrailingWhitespace": true,
+                // do not diplay node modules
                 "files.exclude": {
                     "**/node_modules/": true
                 },
+                "files.trimFinalNewlines": true,
+                "files.trimTrailingWhitespace": true,
                 "editor.formatOnSave": true,
                 "auto-close-tag.activationOnLanguage": [
                     "django-html",
@@ -35,17 +36,21 @@
                 }
             },
             "extensions": [
-                "monosans.djlint",
+                // python
                 "ms-python.black-formatter",
-                "ms-python.vscode-pylance",
-                "oderwat.indent-rainbow",
-                "mhutchie.git-graph",
-                "ms-azuretools.vscode-docker",
-                "batisteo.vscode-django",
                 "ms-python.python",
-                "editorconfig.editorconfig",
+                "charliermarsh.ruff",
+                "ms-python.vscode-pylance",
+                // django
+                "monosans.djlint",
+                "batisteo.vscode-django",
+                // version control
+                "mhutchie.git-graph",
                 "eamodio.gitlens",
-                "charliermarsh.ruff"
+                // others
+                "oderwat.indent-rainbow",
+                "ms-azuretools.vscode-docker",
+                "editorconfig.editorconfig"
             ]
         }
     }

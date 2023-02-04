@@ -18,6 +18,7 @@
                 "files.trimTrailingWhitespace": true,
                 "editor.formatOnSave": true,
                 "python.languageServer": "Pylance",
+                "python.formatting.provider": "none",
                 "auto-close-tag.activationOnLanguage": [
                     "django-html",
                     "html"
@@ -30,11 +31,18 @@
                 },
                 "[markdown]": {
                     "files.trimTrailingWhitespace": false
+                },
+                "[python]": {
+                    "editor.defaultFormatter":"ms-python.black-formatter"
                 }
             },
             "extensions": [
                 // python
                 "ms-python.python",
+                // version control
+                "mhutchie.git-graph",
+                "eamodio.gitlens",
+                // python tools
                 "ms-python.black-formatter",
                 "charliermarsh.ruff",
                 "ms-python.vscode-pylance",
@@ -45,9 +53,6 @@
                 // html, django-html
                 "formulahendry.auto-close-tag",
                 "formulahendry.auto-rename-tag",
-                // version control
-                "mhutchie.git-graph",
-                "eamodio.gitlens",
                 // others
                 "oderwat.indent-rainbow",
                 "ms-azuretools.vscode-docker",

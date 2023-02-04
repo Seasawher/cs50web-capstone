@@ -16,6 +16,9 @@
             "settings": {
                 "files.trimFinalNewlines": true,
                 "files.trimTrailingWhitespace": true,
+                "files.exclude": {
+                    "**/node_modules/": true
+                },
                 "editor.formatOnSave": true,
                 "auto-close-tag.activationOnLanguage": [
                     "django-html",

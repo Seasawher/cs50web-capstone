@@ -63,4 +63,4 @@ class SubmissionForm(BaseForm):
 
     def __init__(self):
         super().__init__()
-        self.fields["submitted_answer"].widget.attrs['placeholder'] = "your answer"
+        self.fields["submitted_answer"].widget.attrs["placeholder"] = "your answer"

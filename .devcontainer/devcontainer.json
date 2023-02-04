@@ -2,21 +2,23 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/docker-existing-docker-compose
 {
     "name": "cs50web-capstone",
-
     "dockerComposeFile": "../docker-compose.yml",
-
     // The 'service' property is the name of the service for the container that VS Code should
     // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
     "service": "django",
-
     "workspaceFolder": "/usr/src",
-
     "customizations": {
         "vscode": {
             "settings": {
+                // do not diplay node modules
+                "files.exclude": {
+                    "**/node_modules/": true
+                },
                 "files.trimFinalNewlines": true,
                 "files.trimTrailingWhitespace": true,
                 "editor.formatOnSave": true,
+                "python.languageServer": "Pylance",
+                "python.formatting.provider": "none",
                 "auto-close-tag.activationOnLanguage": [
                     "django-html",
                     "html"
@@ -29,20 +31,32 @@
                 },
                 "[markdown]": {
                     "files.trimTrailingWhitespace": false
+                },
+                "[python]": {
+                    "editor.defaultFormatter":"ms-python.black-formatter"
                 }
             },
             "extensions": [
-                "monosans.djlint",
-                "ms-python.black-formatter",
-                "ms-python.vscode-pylance",
-                "oderwat.indent-rainbow",
-                "mhutchie.git-graph",
-                "ms-azuretools.vscode-docker",
-                "batisteo.vscode-django",
+                // python
                 "ms-python.python",
-                "editorconfig.editorconfig",
+                // version control
+                "mhutchie.git-graph",
                 "eamodio.gitlens",
-                "charliermarsh.ruff"
+                // python tools
+                "ms-python.black-formatter",
+                "charliermarsh.ruff",
+                "ms-python.vscode-pylance",
+                "ms-python.isort",
+                // django
+                "monosans.djlint",
+                "batisteo.vscode-django",
+                // html, django-html
+                "formulahendry.auto-close-tag",
+                "formulahendry.auto-rename-tag",
+                // others
+                "oderwat.indent-rainbow",
+                "ms-azuretools.vscode-docker",
+                "editorconfig.editorconfig"
             ]
         }
     }

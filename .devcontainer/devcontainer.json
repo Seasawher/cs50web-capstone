@@ -2,15 +2,11 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/docker-existing-docker-compose
 {
     "name": "cs50web-capstone",
-
     "dockerComposeFile": "../docker-compose.yml",
-
     // The 'service' property is the name of the service for the container that VS Code should
     // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
     "service": "django",
-
     "workspaceFolder": "/usr/src",
-
     "customizations": {
         "vscode": {
             "settings": {
@@ -39,10 +35,10 @@
             "extensions": [
                 // python
                 "ms-python.python",
-                "ms-python.vscode-pylance",
-                "ms-python.isort",
                 "ms-python.black-formatter",
                 "charliermarsh.ruff",
+                "ms-python.vscode-pylance",
+                "ms-python.isort",
                 // django
                 "monosans.djlint",
                 "batisteo.vscode-django",

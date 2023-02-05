@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: dockerfile
+    environment:
+      - WATCHPACK_POLLING=true
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/usr/src

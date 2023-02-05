@@ -1,0 +1,5 @@
+FROM node:19 AS Next
+
+WORKDIR /usr/src/frontend
+COPY package*.json ./
+RUN npm install

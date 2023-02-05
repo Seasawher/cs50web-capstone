@@ -1,16 +1,39 @@
 version: "3.9"
 
 services:
+  # backend
   django:
     container_name: django
     build:
-      context: .
+      context: ./django
+      dockerfile: dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./django:/usr/src/django
+    ports:
+      - "8000:8000"
+
+  # frontend
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
       dockerfile: dockerfile
     environment:
       - WATCHPACK_POLLING=true
-    command: python manage.py runserver 0.0.0.0:8000
+    command: npm run dev
+    volumes:
+      - ./frontend:/usr/src/frontend
+    ports:
+      - "3000:3000"
+
+  # container for development
+  vscode:
+    container_name: vscode
+    build:
+      context: .
+      dockerfile: dockerfile
     volumes:
       - .:/usr/src
-    ports:
-      - "8000:8000"
-      - "3000:3000"
+    tty: true
+    stdin_open: true

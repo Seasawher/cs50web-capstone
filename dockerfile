@@ -4,9 +4,11 @@ FROM python:3
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt install -y nodejs && \
     npm install npm@latest -g
+WORKDIR /usr/src/frontend
+COPY /frontend/package*.json ./
+RUN npm install
 
 # Django
-COPY ./django /usr/src/django
 WORKDIR /usr/src/django
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+COPY /django/requirements.txt ./
+RUN pip install -r requirements.txt

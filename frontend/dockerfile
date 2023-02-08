@@ -1,5 +1,6 @@
-FROM node:19 AS Next
+FROM node:19
 
 WORKDIR /usr/src/frontend
 COPY package*.json ./
+
 RUN npm install

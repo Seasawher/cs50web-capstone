@@ -8,10 +8,6 @@
     "customizations": {
         "vscode": {
             "settings": {
-                // do not diplay node modules
-                "files.exclude": {
-                    "**/node_modules/": true
-                },
                 "files.trimFinalNewlines": true,
                 "files.trimTrailingWhitespace": true,
                 "editor.formatOnSave": true

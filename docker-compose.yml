@@ -1,18 +1,6 @@
 version: "3.9"
 
 services:
-  # container for development
-  vscode:
-    build:
-      context: .
-      dockerfile: dockerfile
-    image: cs50web-capstone-vscode
-    container_name: vscode
-    volumes:
-      - .:/usr/src
-    tty: true
-    stdin_open: true
-
   # backend
   django:
     build:
@@ -22,7 +10,7 @@ services:
     container_name: django
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./django:/usr/src/django
+      - .:/usr/src
     ports:
       - "8000:8000"
 
@@ -37,7 +25,7 @@ services:
       - WATCHPACK_POLLING=true
     command: npm run dev
     volumes:
-      - ./frontend:/usr/src/frontend
+      - .:/usr/src
       - node_modules:/usr/src/frontend/node_modules
     ports:
       - "3000:3000"

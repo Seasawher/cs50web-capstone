@@ -1,11 +1,9 @@
 // For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/docker-existing-docker-compose
 {
-    "name": "cs50web-capstone",
+    "name": "django-devcontainer",
     "dockerComposeFile": "../docker-compose.yml",
-    // The 'service' property is the name of the service for the container that VS Code should
-    // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
-    "service": "vscode",
+    "service": "django",
     "workspaceFolder": "/usr/src",
     "customizations": {
         "vscode": {

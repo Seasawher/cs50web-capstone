@@ -1,12 +1,16 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Navbar from '../components/navbar'
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body>
-        <Main />
-        <NextScript />
+      <body className='bg-slate-900 text-white'>
+        <Navbar />
+        <div className="max-w-2xl mx-auto px-3 py-5">
+          <Main />
+          <NextScript />
+        </div>
       </body>
     </Html>
   )

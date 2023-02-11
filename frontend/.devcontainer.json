@@ -10,7 +10,10 @@
             "settings": {
                 "files.trimFinalNewlines": true,
                 "files.trimTrailingWhitespace": true,
-                "editor.formatOnSave": true
+                "editor.formatOnSave": true,
+                "[typescriptreact]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                }
             },
             "extensions": [
                 "mhutchie.git-graph",
@@ -20,7 +23,8 @@
                 "oderwat.indent-rainbow",
                 "ms-azuretools.vscode-docker",
                 "editorconfig.editorconfig",
-                "bradlc.vscode-tailwindcss"
+                "bradlc.vscode-tailwindcss",
+                "esbenp.prettier-vscode"
             ]
         }
     }

@@ -7,7 +7,7 @@ export default function Document() {
       <Head />
       <body className="bg-slate-900 text-white">
         <Navbar />
-        <div className="mx-auto max-w-2xl px-3 py-5">
+        <div className="mx-auto max-w-5xl px-3 py-5">
           <Main />
           <NextScript />
         </div>

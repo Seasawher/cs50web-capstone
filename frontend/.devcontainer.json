@@ -27,5 +27,6 @@
                 "esbenp.prettier-vscode"
             ]
         }
-    }
+    },
+    "shutdownAction": "none"
 }

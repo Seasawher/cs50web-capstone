@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { RocketLaunchIcon } from '@heroicons/react/24/outline'
 
 export default function Navbar() {
   return (
@@ -8,6 +9,7 @@ export default function Navbar() {
         <div className="top-0 left-0 flex flex-row p-4">
           <div className="basis-3/6">
             <Link className="text-xl font-semibold text-sky-300 hover:text-sky-500" href="/">
+              <RocketLaunchIcon className="h-6 w-6 mx-1 inline" />
               Capstone
             </Link>
           </div>

@@ -11,5 +11,5 @@ indent_style = space
 indent_size = 4
 charset = utf-8
 
-[*.{js,jsx,tsx,ts}]
+[*.{js,jsx,tsx,ts,yml}]
 indent_size = 2

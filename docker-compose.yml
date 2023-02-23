@@ -1,10 +1,9 @@
 version: "3.9"
 
 services:
-  # backend
   django:
     build:
-      context: ./django
+      context: .
       dockerfile: dockerfile
     image: cs50web-capstone-django
     container_name: django
@@ -13,23 +12,3 @@ services:
       - .:/usr/src
     ports:
       - "8000:8000"
-
-  # frontend
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: dockerfile
-    image: cs50web-capstone-frontend
-    container_name: frontend
-    environment:
-      - WATCHPACK_POLLING=true
-    command: npm run dev
-    volumes:
-      - .:/usr/src
-      - node_modules:/usr/src/frontend/node_modules
-    ports:
-      - "3000:3000"
-
-# named volume
-volumes:
-  node_modules:

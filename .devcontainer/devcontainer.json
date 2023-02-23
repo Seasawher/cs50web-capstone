@@ -3,7 +3,7 @@
 {
     "name": "django-devcontainer",
     "dockerComposeFile": "../docker-compose.yml",
-    "service": "django",
+    "service": "devcontainer",
     "workspaceFolder": "/usr/src",
     "customizations": {
         "vscode": {

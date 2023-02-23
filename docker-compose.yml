@@ -12,3 +12,14 @@ services:
       - .:/usr/src
     ports:
       - "8000:8000"
+
+  devcontainer:
+    build:
+      context: .
+      dockerfile: .devcontainer.Dockerfile
+    image: cs50web-capstone-devcontainer
+    container_name: devcontainer
+    volumes:
+      - .:/usr/src
+    tty: true
+    stdin_open: true

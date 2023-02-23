@@ -1,13 +1,13 @@
+image:
+  file: .gitpod.Dockerfile
+
 tasks:
   - init: |
-      python -m venv venv
-      source venv/bin/activate
       pip install --upgrade pip wheel setuptools
-      pip install requirements.text
-      python manage.py migrate
+      pip install -r requirements.txt
+      python ./manage.py migrate
   - command: |
-      source venv/bin/activate
-      python manage.py runserver
+      python ./manage.py runserver
   
 ports:
   - port: 8000

@@ -8,10 +8,6 @@
     "customizations": {
         "vscode": {
             "settings": {
-                // do not diplay node modules
-                "files.exclude": {
-                    "**/node_modules/": true
-                },
                 "files.trimFinalNewlines": true,
                 "files.trimTrailingWhitespace": true,
                 "editor.formatOnSave": true,
@@ -35,23 +31,17 @@
                 }
             },
             "extensions": [
-                // python
                 "ms-python.python",
-                // version control
                 "mhutchie.git-graph",
                 "eamodio.gitlens",
-                // python tools
                 "ms-python.black-formatter",
                 "charliermarsh.ruff",
                 "ms-python.vscode-pylance",
                 "ms-python.isort",
-                // django
                 "monosans.djlint",
                 "batisteo.vscode-django",
-                // html, django-html
                 "formulahendry.auto-close-tag",
                 "formulahendry.auto-rename-tag",
-                // others
                 "oderwat.indent-rainbow",
                 "ms-azuretools.vscode-docker",
                 "editorconfig.editorconfig"

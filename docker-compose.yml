@@ -4,7 +4,7 @@ services:
   django:
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     image: cs50web-capstone-django
     container_name: django
     command: python manage.py runserver 0.0.0.0:8000

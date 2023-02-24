@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-from ..forms import SubmissionForm
+from ..forms import SubmissionForm, AddQuizForm
 
 # Create your views here.
 
@@ -46,8 +46,10 @@ class Detail(View):
 class Add(View):
     """post a new quiz"""
 
+    form = AddQuizForm()
+
     def get(self, request: HttpRequest, *args, **kwargs):
-        return render(request, "add.html")
+        return render(request, "add.html", {"form": self.form})
 
     @csrf_exempt
     def post(self, request: HttpRequest, *args, **kwargs):

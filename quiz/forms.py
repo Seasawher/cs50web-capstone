@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import User, Submission
+from .models import User, Submission, Quiz
 
 
 class BaseForm(forms.ModelForm):
@@ -64,3 +64,12 @@ class SubmissionForm(BaseForm):
     def __init__(self):
         super().__init__()
         self.fields["submitted_answer"].widget.attrs["placeholder"] = "your answer"
+
+
+class AddQuizForm(BaseForm):
+    class Meta:
+        model = Quiz
+        fields = ["title", "content", "correct_answer"]
+
+    def __init__(self):
+        super().__init__()

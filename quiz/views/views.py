@@ -47,7 +47,7 @@ class Add(View):
     """post a new quiz"""
 
     def get(self, request: HttpRequest, *args, **kwargs):
-        pass
+        return render(request, "add.html")
 
     @csrf_exempt
     def post(self, request: HttpRequest, *args, **kwargs):

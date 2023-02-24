@@ -5,8 +5,10 @@ from ..serializer import UserSerializer, QuizSerializer
 from ..models import User, Quiz, Submission
 from rest_framework import viewsets
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
-from ..forms import SubmissionForm
+from ..forms import SubmissionForm, AddQuizForm
 
 # Create your views here.
 
@@ -35,26 +37,24 @@ class Detail(View):
     template = "detail.html"
 
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
-        quiz_id = kwargs['quiz_id']
+        quiz_id = kwargs["quiz_id"]
         quiz = Quiz.objects.get(pk=quiz_id)
-        return render(request, "detail.html", {
-            "quiz": quiz,
-            "form": self.form
-        })
+        return render(request, "detail.html", {"quiz": quiz, "form": self.form})
 
 
+@method_decorator(login_required, name="dispatch")
 class Add(View):
     """post a new quiz"""
 
+    form = AddQuizForm()
+
     def get(self, request: HttpRequest, *args, **kwargs):
-        pass
+        return render(request, "add.html", {"form": self.form})
 
     @csrf_exempt
     def post(self, request: HttpRequest, *args, **kwargs):
         user = request.user
         submisson = Submission(
-            user = user,
-            quiz = kwargs['quiz_id'],
-            submitted_answer = request.POST["quiz_id"]
+            user=user, quiz=kwargs["quiz_id"], submitted_answer=request.POST["quiz_id"]
         )
         submisson.save()

@@ -26,7 +26,7 @@ class Quiz(TimeStampedModel):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="posted_quizzes"
     )
-    correct_answer = models.TextField()
+    correct_answer = models.CharField(max_length=50)
 
 
 class Star(TimeStampedModel):

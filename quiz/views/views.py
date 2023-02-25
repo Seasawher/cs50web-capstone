@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
+from django.shortcuts import redirect
 from django.views import View
 from ..serializer import UserSerializer, QuizSerializer
-from ..models import User, Quiz, Submission
+from ..models import User, Quiz
 from rest_framework import viewsets
-from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
@@ -51,10 +51,13 @@ class Add(View):
     def get(self, request: HttpRequest, *args, **kwargs):
         return render(request, "add.html", {"form": self.form})
 
-    @csrf_exempt
     def post(self, request: HttpRequest, *args, **kwargs):
         user = request.user
-        submisson = Submission(
-            user=user, quiz=kwargs["quiz_id"], submitted_answer=request.POST["quiz_id"]
+        quiz = Quiz(
+            user=user,
+            title=request.POST["title"],
+            content=request.POST["content"],
+            correct_answer=request.POST["correct_answer"]
         )
-        submisson.save()
+        quiz.save()
+        return redirect("add")

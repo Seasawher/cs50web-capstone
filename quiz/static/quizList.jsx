@@ -21,7 +21,6 @@ function QuizList() {
     } else {
         return (
             <div>
-                <div className="mb-2 text-right"><AddButton /></div>
                 <div>
                     {quizzes.map(function (quiz) {
                         return <Quiz
@@ -38,14 +37,6 @@ function QuizList() {
             </div>
         );
     }
-}
-
-function AddButton() {
-    return (
-        <a href="quiz/add" className="inline-block bg-slate-700 p-1 rounded-lg hover:bg-slate-600">
-            <PlusIcon className="inline w-6 h-6"/>
-        </a>
-    );
 }
 
 function State({ state }) {

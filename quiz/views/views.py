@@ -7,6 +7,8 @@ from ..models import User, Quiz
 from rest_framework import viewsets
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib import messages
+
 
 from ..forms import SubmissionForm, AddQuizForm
 
@@ -60,4 +62,5 @@ class Add(View):
             correct_answer=request.POST["correct_answer"]
         )
         quiz.save()
-        return redirect("add")
+        messages.success(request, "Submitted successfully!")
+        return render(request, "add.html", {"form": self.form})

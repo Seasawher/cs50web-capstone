@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
-from django.shortcuts import redirect
 from django.views import View
 from ..serializer import UserSerializer, QuizSerializer
 from ..models import User, Quiz

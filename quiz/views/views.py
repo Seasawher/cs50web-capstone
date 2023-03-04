@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from django.views import View
 from ..serializer import UserSerializer, QuizSerializer
-from ..models import User, Quiz
+from ..models import User, Quiz, Submission
 from rest_framework import viewsets
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -63,3 +63,25 @@ class Add(View):
         quiz.save()
         messages.success(request, "Submitted successfully!")
         return render(request, "add.html", {"form": self.form})
+
+
+@method_decorator(login_required, name="dispatch")
+class SubmitAnswer(View):
+    form = SubmissionForm()
+
+    def post(self, request: HttpRequest, *args, **kwargs):
+        # get quiz id from url
+        quiz_id = kwargs["quiz_id"]
+        quiz = Quiz.objects.get(pk=quiz_id)
+
+        # save user's submission
+        submission = Submission(
+            user = request.user,
+            quiz = quiz,
+            submitted_answer = request.POST["submitted_answer"],
+        )
+        submission.save()
+
+        # check if the answer is correct
+
+        return render(request, "detail.html", {"quiz": quiz, "form": self.form})

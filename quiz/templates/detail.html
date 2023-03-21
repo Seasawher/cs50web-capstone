@@ -17,9 +17,7 @@
             <form action="{% url "submit" quiz.id %}" method="post">
                 {% csrf_token %}
                 <div class="flex">
-                    {% for field in form %}
-                        {{ field }}
-                    {% endfor %}
+                    {% for field in form %}{{ field }}{% endfor %}
                     <button type="submit" class="mx-4">
                         {% heroicon_outline "paper-airplane" class="inline w-7 h-7 hover:scale-110 hover:text-blue-200 text-blue-500" %}
                     </button>

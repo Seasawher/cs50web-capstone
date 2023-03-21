@@ -83,5 +83,9 @@ class SubmitAnswer(View):
         submission.save()
 
         # check if the answer is correct
-
-        return render(request, "detail.html", {"quiz": quiz, "form": self.form})
+        if quiz.correct_answer == submission.submitted_answer:
+            messages.success(request, "Your answer is accepted!")
+            return render(request, "detail.html", {"quiz": quiz, "form": self.form})
+        else:
+            messages.error(request, "Your answer is not correct!")
+            return render(request, "detail.html", {"quiz": quiz, "form": self.form})

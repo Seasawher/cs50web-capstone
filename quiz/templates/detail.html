@@ -10,7 +10,7 @@
                 <span class="ml-3 text-slate-400">#{{ quiz.id }}</span>
             </h2>
             <div class="mb-4">
-                (display the state of the quiz here) (star number)
+                {% include "components/quiz_status.html" with status="solved" %} (star number)
                 {% comment %} <State state="todo" />
                 <Star star={star} /> {% endcomment %}
             </div>

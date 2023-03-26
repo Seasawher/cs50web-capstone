@@ -40,7 +40,11 @@ class Detail(View):
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         quiz_id = kwargs["quiz_id"]
         quiz = Quiz.objects.get(pk=quiz_id)
-        return render(request, "detail.html", {"quiz": quiz, "form": self.form})
+        return render(
+            request,
+            "detail.html",
+            {"quiz": quiz, "state": quiz.state(request.user), "form": self.form},
+        )
 
 
 @method_decorator(login_required, name="dispatch")
@@ -58,7 +62,7 @@ class Add(View):
             user=user,
             title=request.POST["title"],
             content=request.POST["content"],
-            correct_answer=request.POST["correct_answer"]
+            correct_answer=request.POST["correct_answer"],
         )
         quiz.save()
         messages.success(request, "Submitted successfully!")
@@ -76,9 +80,9 @@ class SubmitAnswer(View):
 
         # save user's submission
         submission = Submission(
-            user = request.user,
-            quiz = quiz,
-            submitted_answer = request.POST["submitted_answer"],
+            user=request.user,
+            quiz=quiz,
+            submitted_answer=request.POST["submitted_answer"],
         )
         submission.save()
 

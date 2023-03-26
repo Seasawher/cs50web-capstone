@@ -1,0 +1,35 @@
+<span id="quiz-state[{{ id }}]">
+</span>
+
+<script type="text/babel">
+    function State({ state }) {
+        if (state == 'todo') {
+            return (
+                <div className="text-slate-400 inline mr-2">
+                    <span className="inline mr-1">-</span>
+                    {state}
+                </div>
+            );
+        }
+        if (state == 'attempted') {
+            return (
+                <div className="text-amber-300 inline mr-2">
+                    <ExclamationCircleIcon className="inline mr-1 w-4 h-4" />
+                    {state}
+                </div>
+            );
+        }
+        if (state == 'solved') {
+            return (
+                <div className="text-emerald-300 inline mr-2">
+                    <CheckCircleIcon className="inline w-4 h-4 mr-1" />
+                    {state}
+                </div>
+            );
+        }
+    }
+
+    const container = document.getElementById("quiz-state[{{id}}]");
+    const root = ReactDOM.createRoot(container);
+    root.render(<State state="{{ state }}"/>);
+</script>

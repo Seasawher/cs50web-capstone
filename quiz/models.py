@@ -28,6 +28,21 @@ class Quiz(TimeStampedModel):
     )
     correct_answer = models.CharField(max_length=50)
 
+    def state(self, user: User) -> str:
+        # the all submission the user has posted to the quiz
+        submissions = Submission.objects.filter(user=user, quiz=self)
+
+        if submissions.count() > 0:
+            quiz_state = "attempted"
+        else:
+            quiz_state = "todo"
+            
+        for submission in submissions:
+            if submission.is_accepted:
+                quiz_state = "solved"
+                break
+        return quiz_state
+
 
 class Star(TimeStampedModel):
     """adding star means the user likes the quiz"""
@@ -47,10 +62,13 @@ class Submission(TimeStampedModel):
     quiz = models.ForeignKey(
         Quiz, on_delete=models.CASCADE, related_name="received_submissions"
     )
-    submitted_answer = models.CharField(max_length=30 ,null=True)
+    submitted_answer = models.CharField(max_length=30, null=True)
 
     @property
     def is_accepted(self) -> bool:
         """returns if the submission is accepted"""
-
-        pass
+        quiz = self.quiz
+        if self.submitted_answer == quiz.correct_answer:
+            return True
+        else:
+            return False

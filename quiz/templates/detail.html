@@ -10,7 +10,7 @@
                 <span class="ml-3 text-slate-400">#{{ quiz.id }}</span>
             </h2>
             <div class="mb-4">
-                {% include "components/quiz_state.html" with state=state %} (star number)
+                {% include "components/quiz_state.html" with state=state id=quiz.id %} (star number)
                 {% comment %} <State state="todo" />
                 <Star star={star} /> {% endcomment %}
             </div>
@@ -29,8 +29,8 @@
 {% endblock body %}
 {% block scripts %}
     <script src="{% static 'util.js' %}"></script>
-    {% comment %} <script type="text/babel" src="{% static 'icon.jsx' %}"></script>
-    <script type="text/babel" src="{% static 'quizList.jsx' %}"></script>
+    <script type="text/babel" src="{% static 'icon.jsx' %}"></script>
+    {% comment %} <script type="text/babel" src="{% static 'quizList.jsx' %}"></script>
     <script type="text/babel" src="{% static 'quizDetail.jsx' %}"></script>
     <script type="text/babel">
         // give information

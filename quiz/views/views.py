@@ -30,9 +30,14 @@ class Index(View):
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         quizzes = Quiz.objects.all()
 
-        # add state property
-        for quiz in quizzes:
-            quiz.quiz_state = quiz.state(request.user)
+        if request.user.is_authenticated:
+            # add state property
+            for quiz in quizzes:
+                quiz.quiz_state = quiz.state(request.user)
+        else:
+            for quiz in quizzes:
+                quiz.quiz_state = "todo"
+
         return render(request, "index.html", {"quizzes": quizzes})
 
 
@@ -45,10 +50,16 @@ class Detail(View):
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         quiz_id = kwargs["quiz_id"]
         quiz = Quiz.objects.get(pk=quiz_id)
+
+        if request.user.is_authenticated:
+            state = quiz.state(request.user)
+        else:
+            state = "todo"
+
         return render(
             request,
             "detail.html",
-            {"quiz": quiz, "state": quiz.state(request.user), "form": self.form},
+            {"quiz": quiz, "state": state, "form": self.form},
         )
 
 

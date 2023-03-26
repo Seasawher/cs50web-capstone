@@ -27,7 +27,7 @@
                     "files.trimTrailingWhitespace": false
                 },
                 "[python]": {
-                    "editor.defaultFormatter":"ms-python.black-formatter"
+                    "editor.defaultFormatter": "ms-python.black-formatter"
                 }
             },
             "extensions": [
@@ -44,7 +44,8 @@
                 "formulahendry.auto-rename-tag",
                 "oderwat.indent-rainbow",
                 "ms-azuretools.vscode-docker",
-                "editorconfig.editorconfig"
+                "editorconfig.editorconfig",
+                "WakaTime.vscode-wakatime"
             ]
         }
     }

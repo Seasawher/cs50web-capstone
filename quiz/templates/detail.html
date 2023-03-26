@@ -29,15 +29,15 @@
 {% endblock body %}
 {% block scripts %}
     <script src="{% static 'util.js' %}"></script>
-    <script type="text/babel" src="{% static 'icon.jsx' %}"></script>
+    {% comment %} <script type="text/babel" src="{% static 'icon.jsx' %}"></script>
     <script type="text/babel" src="{% static 'quizList.jsx' %}"></script>
     <script type="text/babel" src="{% static 'quizDetail.jsx' %}"></script>
     <script type="text/babel">
         // give information
-        {% comment %} const quizId = '{{ quiz.id }}';
+        const quizId = '{{ quiz.id }}';
 
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
-        root.render(<QuizDetail id={quizId} />); {% endcomment %}
-    </script>
+        root.render(<QuizDetail id={quizId} />);
+    </script> {% endcomment %}
 {% endblock scripts %}

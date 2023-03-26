@@ -1,5 +1,4 @@
-<span id="quiz-state">
-    {{ state }}
+<span id="quiz-state[{{ id }}]">
 </span>
 
 <script type="text/babel">
@@ -30,7 +29,7 @@
         }
     }
 
-    const container = document.getElementById("quiz-state");
+    const container = document.getElementById("quiz-state[{{id}}]");
     const root = ReactDOM.createRoot(container);
     root.render(<State state="{{ state }}"/>);
 </script>

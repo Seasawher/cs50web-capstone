@@ -28,7 +28,12 @@ class Index(View):
     """diplay quizzes"""
 
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
-        return render(request, "index.html")
+        quizzes = Quiz.objects.all()
+
+        # add state property
+        for quiz in quizzes:
+            quiz.quiz_state = quiz.state(request.user)
+        return render(request, "index.html", {"quizzes": quizzes})
 
 
 class Detail(View):

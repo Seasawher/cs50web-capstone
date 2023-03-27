@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, JsonResponse
 from django.views import View
 from ..serializer import UserSerializer, QuizSerializer
-from ..models import User, Quiz, Submission
+from ..models import User, Quiz, Submission, Star
 from rest_framework import viewsets
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -117,3 +117,9 @@ class SubmitAnswer(View):
                 "detail.html",
                 {"quiz": quiz, "form": self.form, "state": "attempted"},
             )
+
+@method_decorator(login_required, name="dispatch")
+class AddStar(View):
+    def post(self, request: HttpRequest, *args, **kwargs):
+        """post a new star to the quiz"""
+        return JsonResponse({"message": "Star added successfully."}, status=201)

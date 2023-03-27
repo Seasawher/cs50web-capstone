@@ -1,6 +1,43 @@
 {% load heroicons %}
-<button type="button" class="inline" id="star-button[{{ quiz.id }}]">
-    {% heroicon_outline "star" class="inline w-4 h-4 mr-1" %}
-    {{ quiz.star }}
-</button>
+{% if user.is_authenticated %}
+    <div class="inline" id="star-button[{{ quiz.id }}]"></div>
+    <script type="text/babel">
+        function Star({ star }) {
+            const [starred, setStarred] = React.useState(false);
 
+            function handleClick() {
+                if (starred) {
+                    setStarred(false);
+                } else {
+                    setStarred(true);
+                }
+            }
+
+            if (! starred) {
+                return (
+                    <button type="button" className="inline" onClick={handleClick}>
+                        <StarIcon className="inline w-4 h-4 mr-1" />
+                        {star}
+                    </button>
+                );
+            } else {
+                return (
+                    <button type="button" className="inline text-amber-200" onClick={handleClick}>
+                        <SolidStarIcon className="inline w-4 h-4 mr-1" />
+                        {star+1}
+                    </button>
+                );
+            }
+        }
+
+        let star_count = {{ quiz.star }};
+        const container_{{ quiz.id }} = document.getElementById('star-button[{{ quiz.id }}]');
+        const root_{{ quiz.id }} = ReactDOM.createRoot(container_{{ quiz.id }});
+        root_{{ quiz.id }}.render(<Star star={star_count}/>);
+    </script>
+{% else %}
+    <div class="inline" id="star-button[{{ quiz.id }}]">
+        {% heroicon_outline "star" class="inline w-4 h-4 mr-1" %}
+        {{ quiz.star }}
+    </div>
+{% endif %}

@@ -10,7 +10,7 @@
                 <span class="ml-3 text-slate-400">#{{ quiz.id }}</span>
             </h2>
             <div class="mb-4">
-                {% include "components/quiz_state.html" with state=state id=quiz.id %} (star number)
+                {% include "components/quiz_state.html" with state=state %} (star number)
                 {% comment %} <State state="todo" />
                 <Star star={star} /> {% endcomment %}
             </div>

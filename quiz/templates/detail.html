@@ -14,7 +14,9 @@
                 {% comment %} <State state="todo" />
                 <Star star={star} /> {% endcomment %}
             </div>
-            <div class="[&>p]:mt-7 mb-16">{{ quiz.content }}</div>
+            <div class="[&>p]:mt-7 mb-16">
+                {{ quiz.content| linebreaksbr }}
+            </div>
             <form action="{% url "submit" quiz.id %}" method="post">
                 {% csrf_token %}
                 <div class="flex">

@@ -1,0 +1,6 @@
+{% load heroicons %}
+<button type="button" class="inline" id="star-button[{{ quiz.id }}]">
+    {% heroicon_outline "star" class="inline w-4 h-4 mr-1" %}
+    {{ quiz.star }}
+</button>
+

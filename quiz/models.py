@@ -36,12 +36,18 @@ class Quiz(TimeStampedModel):
             quiz_state = "attempted"
         else:
             quiz_state = "todo"
-            
+
         for submission in submissions:
             if submission.is_accepted:
                 quiz_state = "solved"
                 break
         return quiz_state
+
+    @property
+    def star(self) -> int:
+        """return the number of stars the quiz has gained"""
+        stars = Star.objects.filter(quiz=self)
+        return stars.count()
 
 
 class Star(TimeStampedModel):

@@ -112,10 +112,11 @@ class SubmitAnswer(View):
             )
         else:
             messages.error(request, "Your answer is not correct!")
+            state = quiz.state(request.user)
             return render(
                 request,
                 "detail.html",
-                {"quiz": quiz, "form": self.form, "state": "attempted"},
+                {"quiz": quiz, "form": self.form, "state": state},
             )
 
 @method_decorator(login_required, name="dispatch")

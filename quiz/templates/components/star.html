@@ -2,14 +2,24 @@
 {% if user.is_authenticated %}
     <div class="inline" id="star-button[{{ quiz.id }}]"></div>
     <script type="text/babel">
-        function Star({ star }) {
+        function Star() {
+            const [star, setStar] = React.useState(Number("{{ quiz.star }}"));
             const [starred, setStarred] = React.useState(false);
+
+            function addStar() {
+                fetch(`/quiz/{{ quiz.id }}/addstar`, {
+                    method: 'POST',
+                });
+            }
 
             function handleClick() {
                 if (starred) {
                     setStarred(false);
+                    setStar(star-1);
                 } else {
                     setStarred(true);
+                    addStar();
+                    setStar(star+1);
                 }
             }
 
@@ -24,16 +34,16 @@
                 return (
                     <button type="button" className="inline text-amber-200" onClick={handleClick}>
                         <SolidStarIcon className="inline w-4 h-4 mr-1" />
-                        {star+1}
+                        {star}
                     </button>
                 );
             }
         }
 
-        let star_count = {{ quiz.star }};
+
         const container_{{ quiz.id }} = document.getElementById('star-button[{{ quiz.id }}]');
         const root_{{ quiz.id }} = ReactDOM.createRoot(container_{{ quiz.id }});
-        root_{{ quiz.id }}.render(<Star star={star_count}/>);
+        root_{{ quiz.id }}.render(<Star />);
     </script>
 {% else %}
     <div class="inline" id="star-button[{{ quiz.id }}]">

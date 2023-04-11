@@ -5,6 +5,7 @@ from ..serializer import UserSerializer, QuizSerializer
 from ..models import User, Quiz, Submission, Star
 from rest_framework import viewsets
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 
@@ -119,8 +120,18 @@ class SubmitAnswer(View):
                 {"quiz": quiz, "form": self.form, "state": state},
             )
 
+
 @method_decorator(login_required, name="dispatch")
+@method_decorator(csrf_exempt, name="dispatch")
 class AddStar(View):
     def post(self, request: HttpRequest, *args, **kwargs):
         """post a new star to the quiz"""
+        quiz_id = kwargs["quiz_id"]
+        quiz = Quiz.objects.get(pk=quiz_id)
+        user = request.user
+
+        # search existing star
+        if not Star.objects.filter(user=user, quiz=quiz).exists():
+            star = Star(user=user, quiz=quiz)
+            star.save()
         return JsonResponse({"message": "Star added successfully."}, status=201)

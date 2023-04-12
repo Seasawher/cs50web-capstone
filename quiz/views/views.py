@@ -134,4 +134,16 @@ class AddStar(View):
         if not Star.objects.filter(user=user, quiz=quiz).exists():
             star = Star(user=user, quiz=quiz)
             star.save()
-        return JsonResponse({"message": "Star added successfully."}, status=201)
+        return JsonResponse({"message": "Star added successfully."}, status=204)
+
+
+@method_decorator(login_required, name="dispatch")
+@method_decorator(csrf_exempt, name="dispatch")
+class RemoveStar(View):
+    def post(self, request: HttpRequest, *args, **kwargs):
+        """delete a star from the quiz"""
+        quiz_id = kwargs["quiz_id"]
+        quiz = Quiz.objects.get(pk=quiz_id)
+        user = request.user
+        Star.objects.filter(user=user, quiz=quiz).delete()
+        return JsonResponse({"message": "Star removed successfully."}, status=204)

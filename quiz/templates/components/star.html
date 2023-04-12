@@ -12,9 +12,16 @@
                 });
             }
 
+            function removeStar() {
+                fetch(`/quiz/{{ quiz.id }}/removestar`, {
+                    method: 'POST',
+                });
+            }
+
             function handleClick() {
                 if (starred) {
                     setStarred(false);
+                    removeStar();
                     setStar(star-1);
                 } else {
                     setStarred(true);

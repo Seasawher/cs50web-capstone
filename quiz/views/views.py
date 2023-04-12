@@ -32,12 +32,14 @@ class Index(View):
         quizzes = Quiz.objects.all()
 
         if request.user.is_authenticated:
-            # add state property
+            # add property
             for quiz in quizzes:
                 quiz.quiz_state = quiz.state(request.user)
+                quiz.starred = quiz.is_starred(request.user)
         else:
             for quiz in quizzes:
                 quiz.quiz_state = "todo"
+                quiz.starred = False
 
         return render(request, "index.html", {"quizzes": quizzes})
 
@@ -54,8 +56,10 @@ class Detail(View):
 
         if request.user.is_authenticated:
             state = quiz.state(request.user)
+            quiz.starred = quiz.is_starred(request.user)
         else:
             state = "todo"
+            quiz.starred = False
 
         return render(
             request,

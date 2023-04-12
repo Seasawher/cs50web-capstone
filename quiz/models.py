@@ -43,6 +43,10 @@ class Quiz(TimeStampedModel):
                 break
         return quiz_state
 
+    def is_starred(self, user: User) -> bool:
+        """return if the user starred the quiz"""
+        return Star.objects.filter(user=user, quiz=self).exists()
+
     @property
     def star(self) -> int:
         """return the number of stars the quiz has gained"""

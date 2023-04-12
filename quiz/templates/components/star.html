@@ -1,0 +1,60 @@
+{% load heroicons %}
+{% if user.is_authenticated %}
+    <div class="inline" id="star-button[{{ quiz.id }}]"></div>
+    <script type="text/babel">
+        function Star() {
+            const [star, setStar] = React.useState(Number("{{ quiz.star }}"));
+            const [starred, setStarred] = React.useState({{ quiz.star }});
+
+            function addStar() {
+                fetch(`/quiz/{{ quiz.id }}/addstar`, {
+                    method: 'POST',
+                });
+            }
+
+            function removeStar() {
+                fetch(`/quiz/{{ quiz.id }}/removestar`, {
+                    method: 'POST',
+                });
+            }
+
+            function handleClick() {
+                if (starred) {
+                    setStarred(false);
+                    removeStar();
+                    setStar(star-1);
+                } else {
+                    setStarred(true);
+                    addStar();
+                    setStar(star+1);
+                }
+            }
+
+            if (! starred) {
+                return (
+                    <button type="button" className="inline" onClick={handleClick}>
+                        <StarIcon className="inline w-4 h-4 mr-1" />
+                        {star}
+                    </button>
+                );
+            } else {
+                return (
+                    <button type="button" className="inline text-amber-200" onClick={handleClick}>
+                        <SolidStarIcon className="inline w-4 h-4 mr-1" />
+                        {star}
+                    </button>
+                );
+            }
+        }
+
+
+        const container_{{ quiz.id }} = document.getElementById('star-button[{{ quiz.id }}]');
+        const root_{{ quiz.id }} = ReactDOM.createRoot(container_{{ quiz.id }});
+        root_{{ quiz.id }}.render(<Star />);
+    </script>
+{% else %}
+    <div class="inline" id="star-button[{{ quiz.id }}]">
+        {% heroicon_outline "star" class="inline w-4 h-4 mr-1" %}
+        {{ quiz.star }}
+    </div>
+{% endif %}

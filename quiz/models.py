@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from enum import Enum
 
 # Create your models here.
 
@@ -18,6 +19,12 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
+class States(Enum):
+    TODO = "todo"
+    ATTEMPTED = "attempted"
+    SOLVED = "solved"
+
+
 class Quiz(TimeStampedModel):
     """quiz can be solved"""
 
@@ -28,18 +35,18 @@ class Quiz(TimeStampedModel):
     )
     correct_answer = models.CharField(max_length=50)
 
-    def state(self, user: User) -> str:
+    def state(self, user: User) -> States:
         # the all submission the user has posted to the quiz
         submissions = Submission.objects.filter(user=user, quiz=self)
 
         if submissions.count() > 0:
-            quiz_state = "attempted"
+            quiz_state = States.ATTEMPTED.value
         else:
-            quiz_state = "todo"
+            quiz_state = States.TODO.value
 
         for submission in submissions:
             if submission.is_accepted:
-                quiz_state = "solved"
+                quiz_state = States.SOLVED.value
                 break
         return quiz_state
 

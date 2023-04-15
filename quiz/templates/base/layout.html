@@ -43,7 +43,7 @@
                     {% if user.is_authenticated %}
                         <span class="mx-3">
                             {% heroicon_outline "user" class="inline" %}
-                            {{ user.username }}
+                            <a href="{% url 'profile' user_id=user.id %}">{{ user.username }}</a>
                         </span>
                     {% endif %}
                 </div>

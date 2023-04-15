@@ -9,6 +9,7 @@ urlpatterns = [
     path("quiz/<int:quiz_id>/removestar", views.RemoveStar.as_view(), name="removestar"),
     path("quiz/<int:quiz_id>/submit", views.SubmitAnswer.as_view(), name="submit"),
     path("quiz/add", views.Add.as_view(), name="add"),
+    path("profile/<int:user_id>", views.Profile.as_view(), name="profile"),
     path("login", authenticate.Login.as_view(), name="login"),
     path("logout", authenticate.Logout.as_view(), name="logout"),
     path("register", authenticate.Register.as_view(), name="register"),

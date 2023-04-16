@@ -3,8 +3,8 @@
     <div class="inline" id="star-button[{{ quiz.id }}]"></div>
     <script type="text/babel">
         function Star() {
-            const [star, setStar] = React.useState(Number("{{ quiz.star }}"));
-            const [starred, setStarred] = React.useState({{ quiz.star }});
+            const [star, setStar] = React.useState(Number("{{ quiz.gained_stars.count }}"));
+            const [starred, setStarred] = React.useState({{ quiz.gained_stars.count }});
 
             function addStar() {
                 fetch(`/quiz/{{ quiz.id }}/addstar`, {
@@ -55,6 +55,6 @@
 {% else %}
     <div class="inline" id="star-button[{{ quiz.id }}]">
         {% heroicon_outline "star" class="inline w-4 h-4 mr-1" %}
-        {{ quiz.star }}
+        {{ quiz.gained_stars.count }}
     </div>
 {% endif %}

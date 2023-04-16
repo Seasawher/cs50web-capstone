@@ -6,7 +6,23 @@ from enum import Enum
 
 
 class User(AbstractUser):
-    pass
+    @property
+    def added_stars(self):
+        """
+        defined by related_name of Star model
+
+        stars which the user has ever added to quizzes
+        """
+        pass
+
+    @property
+    def posted_quizzes(self):
+        """
+        defined by related_name of Quiz model
+
+        posts which the user has ever posted
+        """
+        pass
 
 
 class TimeStampedModel(models.Model):
@@ -55,10 +71,13 @@ class Quiz(TimeStampedModel):
         return Star.objects.filter(user=user, quiz=self).exists()
 
     @property
-    def star(self) -> int:
-        """return the number of stars the quiz has gained"""
-        stars = Star.objects.filter(quiz=self)
-        return stars.count()
+    def gained_stars(self):
+        """
+        defined by related_name of Star model
+
+        stars the quiz has ever gained
+        """
+        pass
 
 
 class Star(TimeStampedModel):

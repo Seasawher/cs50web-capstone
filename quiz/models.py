@@ -1,29 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from enum import Enum
+from django.db.models import QuerySet
+
 
 # Create your models here.
 
 
 class User(AbstractUser):
-    @property
-    def added_stars(self):
-        """
-        defined by related_name of Star model
-
-        stars which the user has ever added to quizzes
-        """
-        pass
-
-    @property
-    def posted_quizzes(self):
-        """
-        defined by related_name of Quiz model
-
-        posts which the user has ever posted
-        """
-        pass
-
+    added_stars: QuerySet
+    posted_quizzes: QuerySet
+    made_submissions: QuerySet
+    pass
 
 class TimeStampedModel(models.Model):
     """abstract base class with timestamp"""
@@ -43,6 +31,8 @@ class States(Enum):
 
 class Quiz(TimeStampedModel):
     """quiz can be solved"""
+    gamined_stars: QuerySet
+    received_submissions: QuerySet
 
     title = models.CharField(max_length=50)
     content = models.TextField()
@@ -69,15 +59,6 @@ class Quiz(TimeStampedModel):
     def is_starred(self, user: User) -> bool:
         """return if the user starred the quiz"""
         return Star.objects.filter(user=user, quiz=self).exists()
-
-    @property
-    def gained_stars(self):
-        """
-        defined by related_name of Star model
-
-        stars the quiz has ever gained
-        """
-        pass
 
 
 class Star(TimeStampedModel):

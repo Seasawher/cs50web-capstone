@@ -151,3 +151,10 @@ class RemoveStar(View):
         user = request.user
         Star.objects.filter(user=user, quiz=quiz).delete()
         return JsonResponse({"message": "Star removed successfully."}, status=204)
+
+
+@method_decorator(login_required, name="dispatch")
+class Profile(View):
+    def get(self, request: HttpRequest, *args, **kwargs):
+        """display the user's profile page"""
+        return render(request, "profile.html")

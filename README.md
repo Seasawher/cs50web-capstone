@@ -10,14 +10,14 @@ The major functions of this app are as follows:
 
 * **Display Quizzes**: Users including guests can see all quizzes from all users, with the most recent quiz first. This page should display:
   * ✅ title of the quiz
-  * star: number of stars that the quiz have gained
+  * ✅ star: number of stars that the quiz have gained
   * ✅ author: the user who posted the quiz
   * ✅ timestamp: when the quiz is posted
-  * status (login required): whether the quiz has already been solved, has not yet been solved, or whether they have submitted an answer but have not yet reached a correct answer.
+  * ✅ status (login required): whether the quiz has already been solved, has not yet been solved, or whether they have submitted an answer but have not yet reached a correct answer.
 
 * **View Quiz**: Users including guests can see detail of a quiz. This page should display:
   * ✅ title of the quiz
-  * body of the quiz
+  * ✅ body of the quiz
   * how many times solved
   * percentage of correct answers
   * ✅ form to submit answer
@@ -34,7 +34,7 @@ The major functions of this app are as follows:
   * title of the each quiz
   * status (only for login user) which is one of the TODO/ SOLVED / ATTEMPTED
 
-* **Add or Remove Stars**: Users who are signed in are able to add and remove star to quizzes.
+* **Add or Remove Stars**: ✅ Users who are signed in are able to add and remove star to quizzes.
 
 * **User Profile**: Users including guests can see each user's profile page. This page should display:
   * all of the quizzes for that user

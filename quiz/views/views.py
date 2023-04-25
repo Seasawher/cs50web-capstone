@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.contrib import messages
+from django.core.paginator import Paginator, Page
+from typing import List
+from django.db.models import Model
 
 
 from ..forms import SubmissionForm, AddQuizForm
@@ -41,7 +44,19 @@ class Index(View):
                 quiz.quiz_state = "todo"
                 quiz.starred = False
 
-        return render(request, "index.html", {"quizzes": quizzes})
+        page_obj = paginate(request, quizzes)
+
+        return render(request, "index.html", {"page_obj": page_obj})
+
+
+def paginate(request: HttpRequest, model_objects: List[Model]) -> Page:
+    """
+    create Page object to display 5 quizzes per page
+    """
+    paginator = Paginator(model_objects, 5)
+    page_number = request.GET.get("page") or 1
+    page_obj = paginator.get_page(page_number)
+    return page_obj
 
 
 class Detail(View):

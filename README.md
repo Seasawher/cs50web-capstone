@@ -29,7 +29,7 @@ The major functions of this app are as follows:
 
 * ✅ **Answer Quizzes**: Users who are signed in can answer problems. When they submit their answers, the submissions are automatically graded and the results are displayed.
 
-* **Pagination**: Quizzes should only be displayed 10 on a page. If there are more than ten quizzes, a “Next” button should appear to take the user to the next page of quizzes. If not on the first page, a “Previous” button should appear to take the user to the previous page of quizzes as well.
+* ✅ **Pagination**: Quizzes should only be displayed 5 on a page. If there are more than ten quizzes, a “Next” button should appear to take the user to the next page of quizzes. If not on the first page, a “Previous” button should appear to take the user to the previous page of quizzes as well.
 
 * **Search and Sort Quizzes**: Users including guests can search or filter quizzes by the following items:
   * star order

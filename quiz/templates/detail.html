@@ -12,10 +12,7 @@
             <div class="mb-4 flow-root relative">
                 {% include "components/quiz_state.html" with state=state %}
                 {% include "components/star.html" with quiz=quiz %}
-                <span class="text-emerald-400">
-                    {% heroicon_solid "chart-bar" class="inline mr-1 w-4 h-4" %}
-                    {{ quiz.success_rate }}%
-                </span>
+                {% include "components/success_rate.html" with quiz=quiz %}
                 <div class="absolute right-0 inline">
                     <span class="text-slate-400 mr-2">{{ quiz.user }}</span>
                     <span class="mr-2">{{ quiz.created_at }}</span>
@@ -38,8 +35,8 @@
     <script src="{% static 'util.js' %}"></script>
     <script type="text/babel" src="{% static 'icon.jsx' %}"></script>
     {% comment %} <script type="text/babel" src="{% static 'quizList.jsx' %}"></script>
-        <script type="text/babel" src="{% static 'quizDetail.jsx' %}"></script>
-        <script type="text/babel">
+            <script type="text/babel" src="{% static 'quizDetail.jsx' %}"></script>
+            <script type="text/babel">
         // give information
         const quizId = '{{ quiz.id }}';
 

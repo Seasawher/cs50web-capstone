@@ -1,0 +1,24 @@
+{% load heroicons %}
+<span class="mx-1">
+    {% if quiz.success_rate == '-' %}
+        <span class="text-slate-400">
+            {% heroicon_solid "chart-bar" class="inline w-4 h-4" %}
+            {{ quiz.success_rate }} %
+        </span>
+    {% elif quiz.success_rate >= 70 %}
+        <span class="text-emerald-400">
+            {% heroicon_solid "chart-bar" class="inline w-4 h-4" %}
+            {{ quiz.success_rate }} %
+        </span>
+    {% elif quiz.success_rate >= 40 %}
+        <span class="text-amber-300">
+            {% heroicon_solid "chart-bar" class="inline w-4 h-4" %}
+            {{ quiz.success_rate }} %
+        </span>
+    {% else %}
+        <span class="text-rose-400">
+            {% heroicon_solid "chart-bar" class="inline w-4 h-4" %}
+            {{ quiz.success_rate }} %
+        </span>
+    {% endif %}
+</span>

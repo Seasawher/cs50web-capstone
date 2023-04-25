@@ -45,7 +45,8 @@
                 "oderwat.indent-rainbow",
                 "ms-azuretools.vscode-docker",
                 "editorconfig.editorconfig",
-                "WakaTime.vscode-wakatime"
+                "WakaTime.vscode-wakatime",
+                "yzhang.markdown-all-in-one"
             ]
         }
     }

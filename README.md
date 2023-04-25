@@ -20,9 +20,9 @@ The major functions of this app are as follows:
   * ✅ body of the quiz
   * ✅ who is the author
   * ✅ timestamp when it was posted
-  * how many times solved
-  * percentage of correct answers
   * ✅ form to submit answer
+  * correct answer rate
+    * rate = ( the number of users who reached the correct answer )/(the number of users who has ever submitted an answer)
 
 * ✅ **Post a New Quiz**: Users who are signed in should be able to write a new text-based quiz by filling in text into a text area and then clicking a button to submit the quiz.
   * To maintain consistency with the answers, quizzes cannot be edited once submitted.

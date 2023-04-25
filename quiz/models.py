@@ -72,7 +72,7 @@ class Quiz(TimeStampedModel):
         """return if the user starred the quiz"""
         return Star.objects.filter(user=user, quiz=self).exists()
 
-    def success_rate(self) -> int:
+    def success_rate(self) -> int|str:
         """
         a = the number of users who reached the correct answer
         b = the number of users who has ever submitted an answer
@@ -80,13 +80,18 @@ class Quiz(TimeStampedModel):
         """
         submissions = Submission.objects.filter(quiz=self)
         population = set()
+        solver = set()
         for submission in submissions:
             population.add(submission.user)
-        denominator = len(population)
 
-        solver = []
-        numerator = 0
-        return 0
+            if submission.is_accepted:
+                solver.add(submission.user)
+        denominator = len(population)
+        numerator = len(solver)
+        if denominator != 0:
+            return int((numerator / denominator) * 100 )
+        else:
+            return '-'
 
 
 class Star(TimeStampedModel):

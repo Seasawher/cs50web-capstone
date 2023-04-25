@@ -18,6 +18,8 @@ The major functions of this app are as follows:
 * **View Quiz**: Users including guests can see detail of a quiz. This page should display:
   * ✅ title of the quiz
   * ✅ body of the quiz
+  * ✅ who is the author
+  * ✅ timestamp when it was posted
   * how many times solved
   * percentage of correct answers
   * ✅ form to submit answer

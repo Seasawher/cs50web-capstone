@@ -24,6 +24,15 @@ class User(AbstractUser):
             gained_star += quiz.gained_stars.count()
         return gained_star
 
+    def solved_quizzes(self) -> int:
+        """
+        the number of quizzes the user has ever solved
+        """
+        first_correct_submissions = set()
+        for submission in self.made_submissions.all():
+            if submission.is_accepted:
+                first_correct_submissions.add(submission)
+        return len(first_correct_submissions)
 
 class TimeStampedModel(models.Model):
     """abstract base class with timestamp"""

@@ -17,14 +17,14 @@
                 {% heroicon_solid "document-check" class="inline w-5 h-5 mr-1 text-emerald-400" %}
                 <span class="text-lg">
                     <span class="mr-3 text-slate-300">Solved</span>
-                    -
+                    {{ user.solved_quizzes }}
                 </span>
             </div>
             <div class="mb-3">
                 {% heroicon_solid "document" class="inline w-5 h-5 mr-1 text-sky-300" %}
                 <span class="text-lg">
                     <span class="mr-3 text-slate-300">Posted Quizzes</span>
-                    -
+                    {{ user.posted_quizzes.count }}
                 </span>
             </div>
         </div>

@@ -4,17 +4,17 @@
 {% block body %}
     <div id="root" class="max-w-2xl mx-auto">
         {% include "components/message.html" with messages=messages %}
-        <div class="py-6 px-8 mb-3 bg-slate-700 rounded-lg">
-            <h2 class="text-2xl mb-4 font-bold text-sky-300">
+        <div class="px-8 py-6 mb-3 rounded-lg bg-slate-700">
+            <h2 class="mb-4 text-2xl font-bold text-sky-300">
                 {{ quiz.title }}
                 <span class="ml-3 text-slate-400">#{{ quiz.id }}</span>
             </h2>
-            <div class="mb-4 flow-root relative">
+            <div class="relative flow-root mb-4">
                 {% include "components/quiz_state.html" with state=state %}
                 {% include "components/star.html" with quiz=quiz %}
                 {% include "components/success_rate.html" with quiz=quiz %}
                 <div class="absolute right-0 inline">
-                    <span class="text-slate-400 mr-2">{{ quiz.user }}</span>
+                    <span class="mr-2 text-slate-400">{{ quiz.user }}</span>
                     <span class="mr-2">{{ quiz.created_at }}</span>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <div class="flex">
                     {% for field in form %}{{ field }}{% endfor %}
                     <button type="submit" class="mx-4">
-                        {% heroicon_outline "paper-airplane" class="inline w-7 h-7 hover:scale-110 hover:text-blue-200 text-blue-500" %}
+                        {% heroicon_outline "paper-airplane" class="inline text-blue-500 w-7 h-7 hover:scale-110 hover:text-blue-200" %}
                     </button>
                 </div>
             </form>
@@ -34,14 +34,4 @@
 {% block scripts %}
     <script src="{% static 'util.js' %}"></script>
     <script type="text/babel" src="{% static 'icon.jsx' %}"></script>
-    {% comment %} <script type="text/babel" src="{% static 'quizList.jsx' %}"></script>
-            <script type="text/babel" src="{% static 'quizDetail.jsx' %}"></script>
-            <script type="text/babel">
-        // give information
-        const quizId = '{{ quiz.id }}';
-
-        const container = document.getElementById('root');
-        const root = ReactDOM.createRoot(container);
-        root.render(<QuizDetail id={quizId} />);
-    </script> {% endcomment %}
 {% endblock scripts %}

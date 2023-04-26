@@ -1,7 +1,6 @@
 {% extends "base/layout.html" %}
 {% load static %}
 {% block body %}
-    {% comment %} <div id="root" class="max-w-2xl mx-auto"></div> {% endcomment %}
     <div class="max-w-2xl mx-auto">
         {% for quiz in page_obj %}
             <div class="px-8 pt-3 pb-6 mb-3 rounded-lg bg-slate-700">
@@ -53,12 +52,4 @@
 {% block scripts %}
     <script src="{% static 'util.js' %}"></script>
     <script type="text/babel" src="{% static 'icon.jsx' %}"></script>
-    {% comment %}
-        <script type="text/babel" src="{% static 'quizList.jsx' %}"></script>
-        <script type="text/babel">
-            const container = document.getElementById('root');
-            const root = ReactDOM.createRoot(container);
-            root.render(<QuizList />);
-        </script>
-    {% endcomment %}
 {% endblock scripts %}

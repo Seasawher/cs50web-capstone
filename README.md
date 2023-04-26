@@ -39,10 +39,10 @@ The major functions of this app are as follows:
 * **Add or Remove Stars**: ✅ Users who are signed in are able to add and remove star to quizzes.
 
 * **User Profile**: Users including guests can see each user's profile page. This page should display:
-  * all of the quizzes for that user
-  * the number of stars that user have gained
+  * ✅ all of the quizzes for that user
+  * ✅ the number of stars that user have gained
+  * ✅ the number of quizzes that user have ever solved
   * all of the submissions for that user
-  * the number of quizzes that user have ever solved
 
 * **Responsive Design**: The site's UI does not collapse regardless of user's screen size.
 

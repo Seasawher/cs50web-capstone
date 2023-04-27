@@ -31,11 +31,6 @@ The major functions of this app are as follows:
 
 * ✅ **Pagination**: Quizzes should only be displayed 5 on a page. If there are more than ten quizzes, a “Next” button should appear to take the user to the next page of quizzes. If not on the first page, a “Previous” button should appear to take the user to the previous page of quizzes as well.
 
-* **Search and Sort Quizzes**: Users including guests can search or filter quizzes by the following items:
-  * star order
-  * title of the each quiz
-  * status (only for login user) which is one of the TODO/ SOLVED / ATTEMPTED
-
 * **Add or Remove Stars**: ✅ Users who are signed in are able to add and remove star to quizzes.
 
 * **User Profile**: Users including guests can see each user's profile page. This page should display:
@@ -44,7 +39,7 @@ The major functions of this app are as follows:
   * ✅ the number of quizzes that user have ever solved
   * ✅ all of the submissions for that user
 
-* **Responsive Design**: The site's UI does not collapse regardless of user's screen size.
+* **Responsive Design**: ✅ The site's UI does not collapse regardless of user's screen size.
 
 ## Distinctiveness and complexity
 

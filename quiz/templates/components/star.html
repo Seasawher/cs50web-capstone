@@ -4,7 +4,7 @@
     <script type="text/babel">
         function Star() {
             const [star, setStar] = React.useState(Number("{{ quiz.gained_stars.count }}"));
-            const [starred, setStarred] = React.useState({{ quiz.gained_stars.count }});
+            const [starred, setStarred] = React.useState(JSON.parse('{{ quiz.is_starred }}'.toLowerCase()));
 
             function addStar() {
                 fetch(`/quiz/{{ quiz.id }}/addstar`, {

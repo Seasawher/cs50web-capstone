@@ -38,7 +38,7 @@ class Index(View):
             # add property
             for quiz in quizzes:
                 quiz.quiz_state = quiz.state(request.user)
-                quiz.starred = quiz.is_starred(request.user)
+                quiz.request_user = request.user
         else:
             for quiz in quizzes:
                 quiz.quiz_state = "todo"
@@ -71,7 +71,7 @@ class Detail(View):
 
         if request.user.is_authenticated:
             state = quiz.state(request.user)
-            quiz.starred = quiz.is_starred(request.user)
+            quiz.request_user = request.user
         else:
             state = "todo"
             quiz.starred = False

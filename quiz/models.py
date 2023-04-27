@@ -57,6 +57,9 @@ class Quiz(TimeStampedModel):
     gained_stars: QuerySet
     received_submissions: QuerySet
 
+    # the user who see the quiz, not author
+    request_user: User = None
+
     title = models.CharField(max_length=50)
     content = models.TextField()
     user = models.ForeignKey(
@@ -79,8 +82,12 @@ class Quiz(TimeStampedModel):
                 break
         return quiz_state
 
-    def is_starred(self, user: User) -> bool:
+    @property
+    def is_starred(self) -> bool:
         """return if the user starred the quiz"""
+        if self.request_user is None:
+            return False
+        user = self.request_user
         return Star.objects.filter(user=user, quiz=self).exists()
 
     def success_rate(self) -> int | str:

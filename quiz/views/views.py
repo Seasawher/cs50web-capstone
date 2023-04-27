@@ -172,4 +172,7 @@ class RemoveStar(View):
 class Profile(View):
     def get(self, request: HttpRequest, *args, **kwargs):
         """display the user's profile page"""
-        return render(request, "profile.html")
+        user = request.user
+        submissions = user.made_submissions.order_by('created_at').reverse()
+        submissions = submissions[:10]
+        return render(request, "profile.html", {"submissions": submissions})

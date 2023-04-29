@@ -61,18 +61,34 @@ The major functions of this app are as follows:
   * `migrations/` Database setup
   * `static/` My javascript and jsx files
   * `templates/` My django frontend. There is a template corresponding to each page and a component to load with another template.
-  * `views/` My django backend.
+    * `authenticate/` login/sign up
+    * `base/` template to be extended
+    * `components/` template to be included
+      * `message` error or success message displayed to user
+      * `quiz_state` show quiz state
+      * `star` star of quiz. user can add/remove star
+      * `success_rate` success rate of quiz
+    * `add` quiz add page
+    * `detail` quiz detail page
+    * `index` index page. show quiz list
+    * `profile` user profile page
+  * `views/` My django backend
+    * `authenticate` login/sign up
+    * `views` all except login/sign up
   * `forms` Generate form component
   * `models` Design database structure and define model method
   * `urls` Routing setting
   * etc..
 * `dockerfile` dockerfile to run my app
+* `.dockerignore` please ignore
 * `.devcontainer.Dockerfile` dockerfile to run my development container
 * `docker-compose` For convenience when using devcontainer
 * `requirements` Softwares on which the application depends are described
 * `manage` I didn't touch this file.
 * `README` This file!
-* etc..
+* `.gitignore` please ignore
+* `.gitattributes` please ignore
+* `.editorconfig` please ignore
 
 ## How to run my application
 
@@ -82,9 +98,9 @@ There are two ways to launch an application: using devcontainer or docker-compos
 
 * Install these to your PC:
   * docker desktop
-  * vscode
+  * VSCode
 * Install "Dev Containers" extension for vscode
-* Open this repository
+* Open this repository by VSCode
 * Build and run devcontainer
 * don't forget to run `python manage.py makemigrations` and `python manage.py migrate`
 

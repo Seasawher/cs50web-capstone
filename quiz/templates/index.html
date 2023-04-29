@@ -12,7 +12,9 @@
                     <a href="{% url 'detail' quiz_id=quiz.id %}" class="hover:text-sky-500">{{ quiz.title }}</a>
                 </div>
                 <div class="text-xs text-right">
-                    <span class="mr-2 text-slate-400">{{ quiz.user }}</span>
+                    <span class="mr-2 text-slate-400">
+                        <a href="{% url 'profile' user_id=quiz.user.id %}">{{ quiz.user }}</a>
+                    </span>
                     <span>{{ quiz.created_at }}</span>
                 </div>
             </div>

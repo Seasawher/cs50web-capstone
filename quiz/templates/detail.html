@@ -14,7 +14,9 @@
                 {% include "components/star.html" with quiz=quiz %}
                 {% include "components/success_rate.html" with quiz=quiz %}
                 <span class="flex-grow"></span>
-                <span class="mr-2 text-slate-400">{{ quiz.user }}</span>
+                <span class="mr-2 text-slate-400">
+                    <a href="{% url 'profile' user_id=quiz.user.id %}">{{ quiz.user }}</a>
+                </span>
                 <span class="mr-2">{{ quiz.created_at }}</span>
             </div>
             <div class="[&>p]:mt-7 mb-16">{{ quiz.content| linebreaksbr }}</div>

@@ -10,11 +10,9 @@ This is a platform where people can enjoy solving quizzes and post own quizzes.
 
 * **Compared to Project 2 Commerce**: The function that allows other users to react to what the user has posted is similar to the "auction" and "comment" functions of the e-commerce site created in Project 2. However, this application has a user profile page that allows users to view the past results of any user's answers.
 
-* **Use TailWindCSS**: In previous projects, I used Bootstrap as the CSS framework, but for this application, adopted TailwindCSS for more flexible styling. 
+* **Compared to Project 4 Network**: One of the more complex aspects of this app compared to Project 4 is its use of TailwindCSS. In previous projects, I used Bootstrap as the CSS framework, but for this application, adopted TailwindCSS for more flexible styling. 
   * This makes it easier to style elements as hover or not, and improves the UI. 
   * More colors can be used to customize the look and feel of the website.
-
-* **Use Devcontainer**: 
 
 ## Features
 

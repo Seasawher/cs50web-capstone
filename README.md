@@ -59,12 +59,11 @@ The major functions of this app are as follows:
   * I don't touch this directory much, it's where I keep my Django configurations, etc.
 * `quiz/`
   * `migrations/` Database setup
-  * `static/` My javascript and jsx files. It contains files that have been created but not used...
+  * `static/` My javascript and jsx files
   * `templates/` My django frontend. There is a template corresponding to each page and a component to load with another template.
   * `views/` My django backend.
   * `forms` Generate form component
   * `models` Design database structure and define model method
-  * `serializer` Not used. Please ignore. This file is provided because this application was initially intended to be an SPA, but this file is no longer needed because of a later change of policy.
   * `urls` Routing setting
   * etc..
 * `dockerfile` dockerfile to run my app

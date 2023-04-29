@@ -10,7 +10,9 @@ This is a platform where people can enjoy solving quizzes and post own quizzes.
 
 * **Compared to Project 2 Commerce**: The function that allows other users to react to what the user has posted is similar to the "auction" and "comment" functions of the e-commerce site created in Project 2. However, this application has a user profile page that allows users to view the past results of any user's answers.
 
-* **Use TailWindCSS**: In previous projects, I used Bootstrap as the CSS framework, but for this application, adopted TailwindCSS for more flexible styling. I believe I've achieved a more beautiful and easier-to-understand UI.
+* **Use TailWindCSS**: In previous projects, I used Bootstrap as the CSS framework, but for this application, adopted TailwindCSS for more flexible styling. 
+  * This makes it easier to style elements as hover or not, and improves the UI. 
+  * More colors can be used to customize the look and feel of the website.
 
 * **Use Devcontainer**: 
 
@@ -29,7 +31,7 @@ The major functions of this app are as follows:
   * ✅ title of the quiz
   * ✅ body of the quiz
   * who is the author
-    * 🚧 This is a link that takes you to the user's profile page when clicked.
+    * This is a link that takes you to the user's profile page when clicked.
   * ✅ timestamp when it was posted
   * ✅ form to submit answer
   * ✅ correct answer rate
@@ -45,7 +47,7 @@ The major functions of this app are as follows:
 * **Add or Remove Stars**: ✅ Users who are signed in are able to add and remove star to quizzes.
 
 * **User Profile**: Users including guests can see each user's profile page. This page should display:
-  * 🚧 all of the quizzes the user has posted
+  * ✅ all of the quizzes the user has posted
   * ✅ the number of stars that user have gained
   * ✅ the number of quizzes that user have ever solved
   * ✅ all of the submissions for that user

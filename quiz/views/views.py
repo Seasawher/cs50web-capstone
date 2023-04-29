@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest, JsonResponse
 from django.views import View
-from ..serializer import UserSerializer, QuizSerializer
 from ..models import User, Quiz, Submission, Star
-from rest_framework import viewsets
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -16,16 +14,6 @@ from django.db.models import Model
 from ..forms import SubmissionForm, AddQuizForm
 
 # Create your views here.
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class QuizViewSet(viewsets.ModelViewSet):
-    queryset = Quiz.objects.all()
-    serializer_class = QuizSerializer
 
 
 class Index(View):

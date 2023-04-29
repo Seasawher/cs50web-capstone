@@ -15,17 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from rest_framework import routers
-
-from quiz.views.views import *
-
-# router setting for Django Rest Framework
-Router = routers.DefaultRouter()
-Router.register(r'user', UserViewSet)
-Router.register(r'quiz', QuizViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include(Router.urls)),
     path("", include("quiz.urls")),
 ]
